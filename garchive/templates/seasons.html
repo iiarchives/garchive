@@ -3,12 +3,23 @@
     <link rel="stylesheet" type="text/css" href="/~/css/seasons.css">
     <div id="content">
         <h1>Available Seasons</h1>
+        <hr>
         <div id="seasons">
             {% for season in seasons %}
-                <div class="season">
-                    <h2><a href = "/seasons/{{ season['id'] }}">Season {{ season["id"] }}</a> {% if not season["end"] %}<span class = "tag label-active">Active</span>{% endif %}</h3>
-                    <p class = "label-runtime">{{ season["start"] }} - {{ season["end"] or "today" }}</p>
-                </div>
+                <a class="season" href="/seasons/{{ season['id'] }}">
+                    <div class="
+                        season-header
+                        {{ 'season-active' if not season['end'] }}
+                        {{ 'season-upcoming' if not season['start'] }}
+                    ">
+                        <h2>{{ season["name"] }}</h2>
+                    </div>
+                    <div class="season-body">
+                        <p>{{ season["description"] }}</p>
+                        <hr>
+                        <p>{{ (season["start"] + " - " + (season["end"] if season["end"] else "Today")) if season["start"] else "Upcoming" }}</p>
+                    </div>
+                </a>
             {% endfor %}
         </div>
     </div>
