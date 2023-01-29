@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>
+        Geesecraft Season {{ data["id"] }}
+        <span class = "tag">{{ data["start"] }} - {{ data["end"] or "today" }}</span>
+    </h2>
+    <p>{{ data["description"] }}</p>
+    <hr>
+    <p>Accomplishments:</p>
+    <ul>
+        {% for ack in data["accomplishments"] %}
+            <li>{{ ack }}</li>
+        {% endfor %}
+    </ul>
+    <p>Server members:</p>
+    <ul>
+        {% for member in data["whitelist"] %}
+            <li>{{ member["name"] }}</li>
+        {% endfor %}
+    </ul>
+    <hr>
+    {% if data["world_download"] %}
+        <a href = "/seasons/{{ data['id'] }}/download">Download world file (season.zip)</a> <br>
+        <a href = "/seasons/{{ data['id'] }}/logs/download">Download server logs (logs.tgz)</a>
+    {% else %}
+        <p>No world/log download available.</p>
+    {% endif %}
+{% endblock %}
