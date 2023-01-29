@@ -6,8 +6,8 @@
         <div id="seasons">
             {% for season in seasons %}
                 <div class="season">
-                    <h2><a href = "/seasons/{{ season['id'] }}">Season {{ season["id"] }}</a> {% if season["active"] %}<span class = "tag label-active">Active</span>{% endif %}</h3>
-                    <p class = "label-runtime">{{ season["runtime"] }}</p>
+                    <h2><a href = "/seasons/{{ season['id'] }}">Season {{ season["id"] }}</a> {% if not season["end"] %}<span class = "tag label-active">Active</span>{% endif %}</h3>
+                    <p class = "label-runtime">{{ season["start"] }} - {{ season["end"] or "today" }}</p>
                 </div>
             {% endfor %}
         </div>
