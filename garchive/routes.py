@@ -11,22 +11,28 @@ season_folder = os.path.abspath("seasons")
 
 # Routes
 @app.route("/")
+def route_home() -> None:
+    return render_template(
+        "home.html"
+    ), 200
+
+@app.route("/seasons")
 def route_index() -> None:
     seasons = []
     for s in os.listdir(season_folder):
-        d = json.loads(open(os.path.join(season_folder, s, "season.json"), "r").read())
+        d = json.loads(open(os.path.join(season_folder, s), "r").read())
         d["runtime"] = d["start"] + " - " + (d["end"] or "today")
         d["active"] = not bool(d["end"])
         d["id"] = s
         seasons.append(d)
 
     return render_template(
-        "index.html",
+        "seasons.html",
         seasons = sorted(seasons, key = lambda s: s["end"] or "")
     ), 200
 
 @app.route("/seasons/<string:sid>")
-def route_season_info(sid: str) -> None:
+def route_details(sid: str) -> None:
     lseason_folder = os.path.join(season_folder, sid)
     if not os.path.isdir(lseason_folder):
         return abort(404)
@@ -41,7 +47,7 @@ def route_season_info(sid: str) -> None:
         data["whitelist"] = json.loads(fh.read())
 
     return render_template(
-        "season.html",
+        "details.html",
         data = data
     ), 200
 

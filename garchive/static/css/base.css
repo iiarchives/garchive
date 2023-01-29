@@ -1,0 +1,60 @@
+* {
+    font-family: "Roboto", sans-serif;
+}
+
+body {
+    background-image: url("/~/assets/deepslate.png");
+    color: #fefefe;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+footer {
+    bottom: 0;
+    position: absolute;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    align-items: center;
+    background-image: url("/~/assets/stone.png");
+    display: flex;
+    justify-content: center;
+    height: 32px;
+    padding: 10px;
+}
+
+
+nav a, nav p {
+    align-items: center;
+    color: #fefefe;
+    display: flex;
+    gap: 5px;
+    font-size: 16px;
+    font-weight: 200;
+    line-height: 32px;
+    margin: 0;
+    padding: 0 5px;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: #dcdcdc;
+    cursor: pointer;
+}
+nav img {
+    height: 24px;
+}
+
+#credit {
+    bottom: 0;
+    font-size: 15px;
+    margin: 10px;
+    padding: 0;
+    position: absolute;
+    right: 0;
+}

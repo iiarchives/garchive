@@ -1,0 +1,22 @@
+#content {
+    margin: 50px 20%;
+    min-width: 150px;
+    width: 60%;
+}
+
+#content h1 {
+    text-align: center;
+    margin: 0;
+    padding: 25px 0;
+    font-size: 25px;
+    font-weight: 200;
+    line-height: 25px;
+}
+
+#content p {
+    margin: 0;
+    padding: 20px 0;
+    font-size: 15px;
+    font-weight: 200;
+    line-height: 15px;
+}
