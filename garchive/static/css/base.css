@@ -5,38 +5,53 @@
 body {
     background-image: url("/~/assets/deepslate.png");
     color: #fefefe;
-    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     margin: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
     overflow-y: auto;
     padding: 0;
-    position: relative;
 }
 
 footer {
-    bottom: 0;
-    position: absolute;
-    width: 100vw;
+    height: 100px;
     margin: 0;
     padding: 0;
+    position: relative;
+    width: 100vw;
+}
+
+footer p {
+    bottom: 0;
+    position: absolute;
+    right: 0;
+}
+
+
+main {
+    flex: 1;
+    margin: 50px;
+    min-width: 150px;
+    width: calc(100% - 100px);
 }
 
 nav {
     align-items: center;
     background-image: url("/~/assets/stone.png");
     display: flex;
-    justify-content: center;
     height: 32px;
+    justify-content: center;
     padding: 10px;
 }
-
 
 nav a, nav p {
     align-items: center;
     color: #fefefe;
     display: flex;
-    gap: 5px;
     font-size: 16px;
     font-weight: 200;
+    gap: 5px;
     line-height: 32px;
     margin: 0;
     padding: 0 5px;
@@ -61,17 +76,18 @@ nav img {
 }
 
 ::-webkit-scrollbar {
-    width: 2px;
+    height: 3px;
+    width: 3px;
 }
   
 ::-webkit-scrollbar-track {
-    background: #2f2f2f;
-}
-
-::-webkit-scrollbar-thumb {
     background: #4f4f4f;
 }
 
+::-webkit-scrollbar-thumb {
+    background: #8f8f8f;
+}
+
 ::-webkit-scrollbar-thumb:hover {
-    background: #3f3f3f;
+    background: #6f6f6f;
 }

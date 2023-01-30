@@ -1,26 +1,26 @@
 {% extends "base.html" %}
 {% block content %}
     <link rel="stylesheet" type="text/css" href="/~/css/seasons.css">
-    <div id="content">
-        <h1>Available Seasons</h1>
-        <hr>
-        <div id="seasons">
-            {% for season in seasons %}
-                <a class="season" href="/seasons/{{ season['id'] }}">
-                    <div class="
-                        season-header
-                        {{ 'season-active' if not season['end'] }}
-                        {{ 'season-upcoming' if not season['start'] }}
-                    ">
-                        <h2>{{ season["name"] }}</h2>
-                    </div>
-                    <div class="season-body">
-                        <p>{{ season["description"] }}</p>
-                        <hr>
-                        <p>{{ (season["start"] + " - " + (season["end"] if season["end"] else "Today")) if season["start"] else "Upcoming" }}</p>
-                    </div>
-                </a>
-            {% endfor %}
-        </div>
+    <h1>Available Seasons</h1>
+    <hr>
+    <div id="seasons">
+        {% for season in seasons %}
+            <a class="season" href="/seasons/{{ season['id'] }}">
+                <div class="season-header {{ 'season-active' if not season['end'] }} {{ 'season-upcoming' if not season['start'] }}">
+                    <h2>{{ season["name"] }}</h2>
+                </div>
+                <div class="season-body">
+                    <p>{{ season["description"] }}</p>
+                </div>
+                <hr>
+                <div class="season-footer">
+                    <p>
+                        {{ season["start"] if season["start"] else "Upcoming" }}
+                        <br>
+                        {{ season["end"] if season["end"] }}
+                    </p>
+                </div>
+            </a>
+        {% endfor %}
     </div>
 {% endblock %}

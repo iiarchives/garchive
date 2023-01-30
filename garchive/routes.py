@@ -19,7 +19,7 @@ def route_home() -> None:
     ), 200
 
 @app.route("/seasons")
-def route_index() -> None:
+def route_seasons() -> None:
     seasons = []
     for s in os.listdir(season_folder):
         with open(os.path.join(season_folder, s), "r") as fh:
@@ -46,6 +46,18 @@ def route_details(sid: str) -> None:
     return render_template(
         "details.html",
         data = data
+    ), 200
+
+@app.route("/faq")
+def route_faq() -> None:
+    return render_template(
+        "faq.html"
+    ), 200
+
+@app.route("/contacts")
+def route_contacts() -> None:
+    return render_template(
+        "contacts.html"
     ), 200
 
 @app.route("/~/<path:path>")
