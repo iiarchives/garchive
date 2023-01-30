@@ -1,8 +1,18 @@
+@keyframes scrollPanorama {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 25% 100%;
+    }
+}
+
 * {
     font-family: "Roboto", sans-serif;
 }
 
 body {
+    animation: scrollPanorama 60s linear infinite;
     background-image: url("/~/assets/deepslate.png");
     color: #fefefe;
     display: flex;
