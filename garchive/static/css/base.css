@@ -28,7 +28,6 @@ footer p {
     right: 0;
 }
 
-
 main {
     flex: 1;
     margin: 50px;
@@ -40,7 +39,7 @@ nav {
     align-items: center;
     background-image: url("/~/assets/stone.png");
     display: flex;
-    height: 32px;
+    flex-wrap: wrap;
     justify-content: center;
     padding: 10px;
 }
