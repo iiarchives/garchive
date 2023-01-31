@@ -1,4 +1,4 @@
-# Copyright 2022 iiPython
+# Copyright 2022-2023 iiPython
 
 # Modules
 import os
@@ -16,6 +16,10 @@ view = use_templates(
     loader = FileSystemLoader(os.path.join(os.path.dirname(__file__), "templates")),
     enable_async = True
 )
+
+# Start username identification
+from .identity import start_loop, match_ip
+start_loop()
 
 # Routes
 from .routes import *

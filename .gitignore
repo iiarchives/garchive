@@ -1,2 +1,5 @@
 # Cache
 __pycache__/
+
+# Hide data folder
+data/
