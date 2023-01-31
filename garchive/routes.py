@@ -3,23 +3,19 @@
 # Modules
 import os
 import json
-from garchive import app
-from flask import render_template, abort, send_from_directory
+from garchive import app, root, view
+from blacksheep.server.responses import not_found
 
 # Configuration
-root = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
 season_folder = os.path.join(root, "seasons")
-static_folder = os.path.join(root, "garchive/static")
 
 # Routes
 @app.route("/")
-def route_home() -> None:
-    return render_template(
-        "home.html"
-    ), 200
+async def route_home() -> None:
+    return await view("home", {})
 
 @app.route("/seasons")
-def route_seasons() -> None:
+async def route_seasons() -> None:
     seasons = []
     for s in os.listdir(season_folder):
         with open(os.path.join(season_folder, s), "r") as fh:
@@ -28,38 +24,30 @@ def route_seasons() -> None:
         data["id"] = s.removesuffix(".json")
         seasons.append(data)
 
-    return render_template(
-        "seasons.html",
-        seasons = sorted(seasons, key = lambda s: s["id"], reverse = True)
-    ), 200
+    return await view(
+        "seasons",
+        {"seasons": sorted(seasons, key = lambda s: s["id"], reverse = True)}
+    )
 
-@app.route("/seasons/<string:sid>")
-def route_details(sid: str) -> None:
+@app.route("/seasons/{sid}")
+async def route_details(sid: str) -> None:
     season_path = os.path.join(season_folder, f"{sid}.json")
     if not os.path.isfile(season_path):
-        return abort(404)
+        return not_found("No such season exists.")
 
     # Load season information
     with open(season_path, "r") as fh:
         data = json.loads(fh.read())
 
-    return render_template(
-        "details.html",
-        data = data
-    ), 200
+    return await view(
+        "details",
+        {"data": data}
+    )
 
 @app.route("/faq")
-def route_faq() -> None:
-    return render_template(
-        "faq.html"
-    ), 200
+async def route_faq() -> None:
+    return await view("faq", {})
 
 @app.route("/contacts")
-def route_contacts() -> None:
-    return render_template(
-        "contacts.html"
-    ), 200
-
-@app.route("/~/<path:path>")
-def route_static_file(path: str) -> None:
-    return send_from_directory(static_folder, path)
+async def route_contacts() -> None:
+    return await view("contacts", {})
