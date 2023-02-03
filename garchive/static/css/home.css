@@ -1,16 +1,15 @@
-main h1 {
+main h2 {
     font-size: 25px;
-    font-weight: 200;
+    font-weight: 700;
     line-height: 25px;
-    margin: 0;
-    padding: 25px 0;
-    text-align: center;
+}
+
+main hr {
+    margin: 15px 0;
 }
 
 main p {
     font-size: 15px;
     font-weight: 200;
     line-height: 15px;
-    margin: 0;
-    padding: 20px 0;
 }

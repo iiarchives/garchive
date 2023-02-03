@@ -6,26 +6,29 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" type="image/x-icon" href="/~/assets/favicon.ico">
         <link rel="stylesheet" type="text/css" href="/~/css/base.css">
-        <title>Geesecraft Archives</title>
+        <title>Geesecraft Archive</title>
     </head>
     <body>
         <nav>
-            <a href="/">
+            <div id="nav-left">
                 <img src="/~/assets/bread.png">
-                Geesecraft Archives
-            </a>
-            <p>|</p>
-            <a href="/seasons">Seasons</a>
-            <p>|</p>
-            <a href="/faq">FAQ</a>
-            <p>|</p>
-            <a href="/contacts">Contacts</a>
+                <h1>Geesecraft Archive</h1>
+            </div>
+            <div id="nav-center">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/seasons">Seasons</a></li>
+                    <li><a href="https://discord.gg/HYgcp85g6u" target="_blank" rel="noopener noreferrer">Discord<img src="/~/assets/external.png"></a></li>
+                </ul>
+            </div>
+            <div id="nav-right">
+                <button onclick="new Audio('/~/sounds/honk.mp3').play()"><span>HONK!</span></button>
+            </div>
         </nav>
-        <main>
-            {% block content %}{% endblock %}
-        </main>
+        <main>{% block content %}{% endblock %}</main>
         <footer>
-            <p id="credit">Hosted 24/7 by iiPython @ 2021 - 2023</p>
+            <span id="footer-update">Last Updated Feb. 2nd, 2023</span>
+            <span id="footer-credits">Hosted by <a href="https://iipython.cf">iiPython</a> 24/7 | 2021 - 2023</span>
         </footer>
     </body>
 </html>
