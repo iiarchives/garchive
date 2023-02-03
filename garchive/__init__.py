@@ -10,10 +10,10 @@ from blacksheep.server.templating import use_templates
 # Initialization
 root = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
 app = Application(debug = "--reload" in sys.argv)
-app.serve_files(os.path.join(root, "garchive/static"), root_path = "~")
+app.serve_files(os.path.join(root, "garchive/static"), root_path = "~", extensions = (".css", ".ico", ".mp3", ".png", ".zip"))
 view = use_templates(
     app,
-    loader = FileSystemLoader(os.path.join(os.path.dirname(__file__), "templates")),
+    loader = FileSystemLoader(os.path.dirname(__file__)),
     enable_async = True
 )
 

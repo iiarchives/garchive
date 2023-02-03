@@ -1,11 +1,22 @@
 /* Variables */
 :root {
     --theme-dark: #121212;
+    --theme-dark-transparent: #1212128f;
     --theme-gray: #6f6f6f;
+    --theme-gray-transparent: #6f6f6f8f;
     --theme-gray-bright: #8f8f8f;
     --theme-gray-dim: #4f4f4f;
+    --theme-gray-dim-transparent: #4f4f4f8f;
+    --theme-green: #4fff4f;
+    --theme-green-transparent: #4fff4f8f;
     --theme-light: #fefefe;
+    --theme-light-transparent: #fefefe8f;
     --theme-light-dim: #dcdcdc;
+    --theme-light-dim-transparent: #dcdcdc8f;
+    --theme-red: #ff4f4f;
+    --theme-red-transparent: #ff4f4f8f;
+    --theme-yellow: #ffff4f;
+    --theme-yellow-transparent: #ffff4f8f;
 }
 
 /* Animations */
@@ -107,7 +118,19 @@ nav div {
 
 /* Nagivation Bar - Right */
 #nav-right {
+    gap: 25px;
     min-width: 200px;
+}
+
+#nav-right a {
+    font-size: 15px;
+    font-weight: 200;
+    line-height: 15px;
+    text-decoration: none;
+}
+
+#nav-right a:hover {
+    color: var(--theme-light-dim);
 }
 
 #nav-right button {

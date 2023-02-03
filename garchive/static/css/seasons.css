@@ -1,0 +1,74 @@
+/* Title */
+main h2 {
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 25px;
+}
+
+main hr {
+    margin: 15px 0;
+}
+
+/* Body */
+main a {
+    background-color: var(--theme-gray-transparent);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    font-size: 15px;
+    font-weight: 200;
+    height: 200px;
+    line-height: 15px;
+    text-decoration: none;
+    width: 300px;
+}
+
+main a:hover {
+    background-color: var(--theme-gray-dim-transparent);
+}
+
+main div {
+    padding: 5px 10px;
+}
+
+main li {
+    list-style: none;
+}
+
+main ul {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.season-header {
+    background-color: var(--theme-red-transparent);
+    border-radius: 10px 10px 0 0;
+    max-height: 50px;
+    overflow: auto;
+}
+
+.season-active {
+    background-color: var(--theme-green-transparent);
+}
+
+.season-upcoming {
+    background-color: var(--theme-yellow-transparent);
+}
+
+.season-body {
+    flex: 1;
+    overflow: auto;
+}
+
+.season-footer {
+    background-color: var(--theme-gray-dim-transparent);
+    border-radius: 0 0 10px 10px;
+    border-top: var(--theme-gray-bright) 1px solid;
+    max-height: 50px;
+    overflow: auto;
+}

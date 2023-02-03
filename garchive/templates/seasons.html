@@ -1,20 +1,22 @@
-{% extends "base.html" %}
-{% set CSS2 = "home.css" %}
+{% extends "templates/base.html" %}
+{% set localCSS = "css/seasons.css" %}
 {% block content %}
     <h2>Available Seasons</h2>
     <hr>
     <ul>
         {% for season in seasons %}
             <li>
-                <div class="season-header">
-                    {{ season["name"] }}
-                </div>
-                <div class="season-body">
-                    {{ season["description"] }}
-                </div>
-                <div class="season-footer">
-                    {{ season["start"] }}                    
-                </div>
+                <a href="/seasons/{{ season['id'] }}">
+                    <div class="season-header {{ 'season-upcoming' if not season['start'] else ('season-active' if not season['end']) }}">
+                        {{ season["name"] }} {{ "(Upcoming)" if not season["start"] else ("(Active)" if not season["end"]) }}
+                    </div>
+                    <div class="season-body">
+                        {{ season["description"] }}
+                    </div>
+                    <div class="season-footer">
+                        {{ (season["start"] + " - " + (season["end"] or "Today")) if season["start"] else "Upcoming"}}                
+                    </div>
+                </a>
             </li>
         {% endfor %}
     </ul>

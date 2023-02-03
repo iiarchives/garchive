@@ -12,7 +12,7 @@ season_folder = os.path.join(root, "garchive/static/seasons")
 # Routes
 @app.route("/")
 async def route_home() -> None:
-    return await view("home", {})
+    return await view("templates/home", {})
 
 @app.route("/seasons")
 async def route_seasons() -> None:
@@ -21,11 +21,11 @@ async def route_seasons() -> None:
         with open(os.path.join(season_folder, s, "season.json"), "r") as fh:
             data = json.loads(fh.read())
 
-        data["id"] = s.removesuffix(".json")
+        data["id"] = s
         seasons.append(data)
 
     return await view(
-        "seasons",
+        "templates/seasons",
         {"seasons": sorted(seasons, key = lambda s: s["id"], reverse = True)}
     )
 
@@ -38,8 +38,11 @@ async def route_details(sid: str) -> None:
     # Load season information
     with open(season_path, "r") as fh:
         data = json.loads(fh.read())
+        data["download"] = os.path.isfile(os.path.join(season_folder, sid, "download.zip"))
+        data["id"] = sid
+        data["gallery"] = os.listdir(os.path.join(season_folder, sid, "gallery"))
 
     return await view(
-        "details",
+        f"static/seasons/{sid}/about",
         {"data": data}
     )

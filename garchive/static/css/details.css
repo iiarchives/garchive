@@ -1,0 +1,114 @@
+/* Title */
+main h2 {
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 25px;
+}
+
+main hr {
+    margin: 15px 0;
+}
+
+/* Details */
+#details {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 50px;
+    justify-content: center;
+}
+
+/* Details - Content */
+#details-content {
+    flex: 1;
+}
+
+#details-content h3 {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 20px;
+    margin: 10px 0;
+}
+
+#details-content a:hover {
+    color: var(--theme-light-dim);
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+}
+
+#details-content a, #details-content p, #details-content span {
+    font-size: 15px;
+    font-weight: 200;
+    line-height: 15px;
+    text-decoration: none;
+}
+
+#details-content ul {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 10px;
+    margin: 0 20px;
+}
+
+/* Details - Gallery */
+#details-gallery {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+#details-gallery a {
+    align-items: center;
+    background-color: var(--theme-gray-dim-transparent);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 10px;
+    justify-content: center;
+    padding: 10px;
+}
+
+#details-gallery a:hover {
+    background-color: var(--theme-gray-transparent);
+}
+
+#details-gallery img {
+    max-height: 200px;
+    object-fit: contain;
+}
+
+/* Details - Info */
+#details-info {
+    width: 300px;
+}
+
+#details-info h3 {
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 15px;
+    margin: 10px 0;
+}
+
+#details-info a:hover {
+    color: var(--theme-light-dim);
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+}
+
+#details-info a, #details-info p, #details-info span {
+    font-size: 15px;
+    font-weight: 200;
+    line-height: 15px;
+    text-decoration: none;
+}
+
+#details-info ul {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 10px;
+    margin: 0 20px;
+}

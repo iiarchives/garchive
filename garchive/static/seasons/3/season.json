@@ -1,34 +1,15 @@
 {
-    "accomplishments": [
-        "accomplishmentsA",
-        "accomplishmentsB",
-        "accomplishmentsC"
-    ],
-    "description": "description",
-    "end": "Sep. 9, 2022",
+    "accomplishments": [],
+    "description": "Upcoming Geesecraft Season 3",
+    "end": null,
     "members": [
-        "nameA",
-        "nameB",
-        "nameC"
+        "Dm123321_31mD",
+        "iiPython",
+        "pwffy",
+        "tonyz1111"
     ],
-    "modifications": [
-        {
-            "name": "nameA",
-            "type": "Server-Side Mod",
-            "url": "urlA"
-        },
-        {
-            "name": "nameB",
-            "type": "Client-Side Mod",
-            "url": "urlB"
-        },
-        {
-            "name": "nameC",
-            "type": "Plugin",
-            "url": "urlC"
-        }
-    ],
+    "modifications": [],
     "name": "Season 3",
-    "start": "Jun. 16, 2022",
+    "start": null,
     "version": "1.20.0"
 }

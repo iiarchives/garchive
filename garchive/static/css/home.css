@@ -1,3 +1,4 @@
+/* Title */
 main h2 {
     font-size: 25px;
     font-weight: 700;
@@ -8,6 +9,7 @@ main hr {
     margin: 15px 0;
 }
 
+/* Body */
 main p {
     font-size: 15px;
     font-weight: 200;
