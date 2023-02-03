@@ -17,6 +17,9 @@ view = use_templates(
     enable_async = True
 )
 
+# Clean up HTML output
+app.jinja_environment.lstrip_blocks = True
+
 # Start username identification
 from .identity import start_loop, match_ip
 start_loop()

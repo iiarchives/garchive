@@ -6,6 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" type="image/x-icon" href="/~/assets/favicon.ico">
         <link rel="stylesheet" type="text/css" href="/~/css/base.css">
+        
+        {# Load second CSS sheet if we have one #}
+        {% if CSS2 %}<link rel="stylesheet" type="text/css" href="/~/css/{{ CSS2 }}">{% endif %}
         <title>Geesecraft Archive</title>
     </head>
     <body>
