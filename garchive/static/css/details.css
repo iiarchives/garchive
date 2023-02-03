@@ -21,6 +21,7 @@ main hr {
 /* Details - Content */
 #details-content {
     flex: 1;
+    min-width: 300px;
 }
 
 #details-content h3 {
@@ -77,6 +78,7 @@ main hr {
 
 #details-gallery img {
     max-height: 200px;
+    max-width: 100%;
     object-fit: contain;
 }
 
