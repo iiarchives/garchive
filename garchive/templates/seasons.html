@@ -7,13 +7,13 @@
         {% for season in seasons %}
             <li>
                 <div class="season-header">
-
+                    {{ season["name"] }}
                 </div>
                 <div class="season-body">
-
+                    {{ season["description"] }}
                 </div>
                 <div class="season-footer">
-                    
+                    {{ season["start"] }}                    
                 </div>
             </li>
         {% endfor %}
