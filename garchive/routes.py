@@ -26,7 +26,7 @@ async def route_seasons() -> None:
 
     return await view(
         "templates/seasons",
-        {"seasons": sorted(seasons, key = lambda s: s["id"], reverse = True)}
+        {"seasons": sorted(seasons, key = lambda s: s["start"] or "")}
     )
 
 @app.route("/seasons/{sid}")
