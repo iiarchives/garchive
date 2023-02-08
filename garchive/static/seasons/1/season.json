@@ -12,7 +12,18 @@
         "emiqual",
         "iiPython_"
     ],
-    "modifications": [],
+    "modifications": [
+        {
+            "name": "GSit",
+            "type": "Plugin",
+            "url": "https://www.spigotmc.org/resources/gsit-modern-sit-seat-and-chair-lay-and-crawl-plugin-1-13-x-1-19-x.62325/"
+        },
+        {
+            "name": "EssentialsX",
+            "type": "Plugin",
+            "url": "https://essentialsx.net/"
+        }
+    ],
     "name": "Season 1",
     "start": "May. 17, 2021",
     "timestamp": 1621209600000,
