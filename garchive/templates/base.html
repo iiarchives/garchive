@@ -9,13 +9,13 @@
         {# Load second CSS sheet if we have one #}
         {% if localCSS %}<link rel="stylesheet" type="text/css" href="/~/{{ localCSS }}">{% endif %}
         {% if data and "id" in data %}<link rel="stylesheet" type="text/css" href="/~/seasons/{{ data['id'] }}/season.css">{% endif %}
-        <title>Geesecraft Archive</title>
+        <title>Geesecraft</title>
     </head>
     <body>
         <nav>
             <div id="nav-left">
                 <img src="/~/assets/bread.png">
-                <h1>Geesecraft Archive</h1>
+                <h1>Geesecraft</h1>
             </div>
             <div id="nav-center">
                 <ul>
@@ -31,7 +31,7 @@
         </nav>
         <main>{% block content %}{% endblock %}</main>
         <footer>
-            <span id="footer-update">Last Updated Feb. 7th, 2023</span>
+            <span id="footer-update">Last Updated Feb. 8th, 2023</span>
             <span id="footer-credits">Hosted by <a href="https://iipython.cf">iiPython</a> 24/7 | 2021 - 2023</span>
         </footer>
     </body>
