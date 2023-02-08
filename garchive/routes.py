@@ -4,8 +4,13 @@
 import os
 import json
 import time
-from garchive import app, root, view
+from blacksheep import Request
 from blacksheep.server.responses import not_found
+
+from garchive import (
+    app, root, view, match_ip
+)
+from garchive.static import get_client_ip
 
 # Configuration
 season_folder = os.path.join(root, "garchive/static/seasons")
@@ -33,7 +38,7 @@ async def route_seasons() -> None:
     )
 
 @app.route("/seasons/{sid}")
-async def route_details(sid: str, news: str = "latest") -> None:
+async def route_details(request: Request, sid: str, news: str = "latest") -> None:
     season_path = os.path.join(season_folder, sid)
     season_json = os.path.join(season_path, "season.json")
     season_news = os.path.join(season_path, "news")
@@ -49,6 +54,11 @@ async def route_details(sid: str, news: str = "latest") -> None:
         if os.path.isdir(season_news):
             data["news"] = os.listdir(season_news)
 
+    # Check for IP associations
+    if not match_ip(get_client_ip(request)):
+        data["download"] = False  # Even if it exists, they aren't a member
+
+    # Render template
     return await view(
         "details.html",
         {

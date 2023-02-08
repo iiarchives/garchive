@@ -54,7 +54,7 @@ ip_regex = re.compile(r"(\w*)\[\/((\d+\.?){4})")
 def parse_log(log: str) -> dict:
     lines = log.splitlines()
     lines.reverse()  # call .reverse() so we use the latest IPs
-    return {m[0]: m[1] for m in re.findall(ip_regex, "\n".join(lines))}
+    return {m[1]: m[0] for m in re.findall(ip_regex, "\n".join(lines))}
 
 def update_ip_assocs() -> None:
     logger.info("GArchive is updating IP associations ...")
@@ -79,11 +79,24 @@ def update_ip_assocs() -> None:
             assocs = assocs | parse_log(logfile.read().decode("utf8"))
 
     data["skip"] = len(files) - 1
-    print("New skip value should be", data["skip"])
-    print("IP associations:", assocs)
+    if "assocs" in data:
+        data["assocs"] = data["assocs"] | assocs
 
-def match_ip() -> None:
-    pass
+    else:
+        data["assocs"] = assocs
+
+    with open(IP_ASSOC_PATH, "w+") as fh:
+        data = fh.write(json.dumps(data))
+
+def match_ip(ip: str) -> None:
+    if ip == "127.0.0.1":
+        return "Dev"  # Allow downloading season ZIPs when developing
+
+    # Load IP data and match it
+    with open(IP_ASSOC_PATH, "r") as fh:
+        data = json.loads(fh.read())
+
+    return data.get("assocs", {}).get(ip)
 
 # Loop handler
 def start_loop() -> None:
