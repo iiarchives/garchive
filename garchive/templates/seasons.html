@@ -1,4 +1,4 @@
-{% extends "templates/base.html" %}
+{% extends "base.html" %}
 {% set localCSS = "css/seasons.css" %}
 {% block content %}
     <h2>Available Seasons</h2>
@@ -14,7 +14,7 @@
                         {{ season["description"] }}
                     </div>
                     <div class="season-footer">
-                        {{ (season["start"] + " - " + (season["end"] or "Today")) if season["start"] else "Upcoming"}}                
+                        {{ (season["start"] + " - " + (season["end"] or "Today")) if season["start"] else "Upcoming" }}                
                     </div>
                 </a>
             </li>

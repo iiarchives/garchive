@@ -3,6 +3,7 @@
 # Modules
 import os
 import json
+import time
 from garchive import app, root, view
 from blacksheep.server.responses import not_found
 
@@ -12,7 +13,7 @@ season_folder = os.path.join(root, "garchive/static/seasons")
 # Routes
 @app.route("/")
 async def route_home() -> None:
-    return await view("templates/home", {})
+    return await view("home", {})
 
 @app.route("/seasons")
 async def route_seasons() -> None:
@@ -25,24 +26,33 @@ async def route_seasons() -> None:
         seasons.append(data)
 
     return await view(
-        "templates/seasons",
-        {"seasons": sorted(seasons, key = lambda s: s["start"] or "")}
+        "seasons",
+        {
+            "seasons": sorted(seasons, key = lambda s: s["timestamp"] or time.time() * 1000, reverse = True)
+        }
     )
 
 @app.route("/seasons/{sid}")
-async def route_details(sid: str) -> None:
-    season_path = os.path.join(season_folder, sid, "season.json")
-    if not os.path.isfile(season_path):
+async def route_details(sid: str, news: str = "latest") -> None:
+    season_path = os.path.join(season_folder, sid)
+    season_json = os.path.join(season_path, "season.json")
+    season_news = os.path.join(season_path, "news")
+    if not os.path.isfile(season_json):
         return not_found("No such season exists.")
 
     # Load season information
-    with open(season_path, "r") as fh:
+    with open(season_json, "r") as fh:
         data = json.loads(fh.read())
-        data["download"] = os.path.isfile(os.path.join(season_folder, sid, "download.zip"))
+        data["download"] = os.path.isfile(os.path.join(season_path, "download.zip"))
         data["id"] = sid
-        data["gallery"] = os.listdir(os.path.join(season_folder, sid, "gallery"))
+        data["gallery"] = os.listdir(os.path.join(season_path, "gallery"))
+        if os.path.isdir(season_news):
+            data["news"] = os.listdir(season_news)
 
     return await view(
-        f"static/seasons/{sid}/about",
-        {"data": data}
+        "details.html",
+        {
+            "data": data,
+            "news": news if os.path.isfile(os.path.join(season_path, "news", news + ".html")) else None
+        }
     )

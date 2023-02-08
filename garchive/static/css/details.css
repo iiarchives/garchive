@@ -31,12 +31,6 @@ main hr {
     margin: 10px 0;
 }
 
-#details-content a:hover {
-    color: var(--theme-light-dim);
-    text-decoration: underline;
-    text-decoration-thickness: 3px;
-}
-
 #details-content a, #details-content p, #details-content span {
     font-size: 15px;
     font-weight: 200;
@@ -44,23 +38,37 @@ main hr {
     text-decoration: none;
 }
 
-#details-content ul {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    gap: 10px;
-    margin: 0 20px;
+/* Details - Gallery - Buttons */
+#details-gallery-buttons {
+    margin: 10px 0;
+    float: right;
 }
 
-/* Details - Gallery */
-#details-gallery {
+#details-gallery-buttons button {
+    background: var(--theme-gray-dim-transparent);
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+#details-gallery-buttons button:hover {
+    background: var(--theme-gray-transparent);
+    cursor: pointer;
+}
+
+#details-gallery-buttons button:hover > span {
+    color: var(--theme-light-dim);
+}
+
+/* Details - Gallery - Images */
+#details-gallery-images {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     gap: 10px;
 }
 
-#details-gallery a {
+#details-gallery-images a {
     align-items: center;
     background-color: var(--theme-gray-dim-transparent);
     border-radius: 10px;
@@ -72,11 +80,14 @@ main hr {
     padding: 10px;
 }
 
-#details-gallery a:hover {
+#details-gallery-images a:hover {
+    color: var(--theme-light-dim);
     background-color: var(--theme-gray-transparent);
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
 }
 
-#details-gallery img {
+#details-gallery-images img {
     max-height: 200px;
     max-width: 100%;
     object-fit: contain;

@@ -1,0 +1,8 @@
+/* Select */
+#gallery-news select {
+    background: none;
+}
+
+#gallery-news option {
+    background-color: var(--theme-dark);
+}

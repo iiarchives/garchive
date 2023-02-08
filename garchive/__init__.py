@@ -13,7 +13,10 @@ app = Application(debug = "--reload" in sys.argv)
 app.serve_files(os.path.join(root, "garchive/static"), root_path = "~", extensions = (".css", ".ico", ".mp3", ".png", ".zip"))
 view = use_templates(
     app,
-    loader = FileSystemLoader(os.path.dirname(__file__)),
+    loader = FileSystemLoader([
+        os.path.join(os.path.dirname(__file__), "templates"),
+        os.path.join(os.path.dirname(__file__), "static")
+    ]),
     enable_async = True
 )
 
