@@ -93,6 +93,9 @@ def match_ip(ip: str) -> None:
         return "Dev"  # Allow downloading season ZIPs when developing
 
     # Load IP data and match it
+    if not os.path.isfile(IP_ASSOC_PATH):
+        return None
+
     with open(IP_ASSOC_PATH, "r") as fh:
         data = json.loads(fh.read())
 
