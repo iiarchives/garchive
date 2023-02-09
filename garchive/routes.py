@@ -47,7 +47,7 @@ async def route_details(request: Request, sid: str, news: str = "latest") -> Non
         data = json.loads(fh.read())
         data["id"] = sid
         data["download"] = os.path.isfile(os.path.join(season_path, "download.zip"))
-        data["gallery"] = [x for x in os.listdir(os.path.join(season_path, "gallery")) if x.endswith(".webp")]
+        data["gallery"] = [x for x in os.listdir(os.path.join(season_path, "gallery")) if x.endswith(".png")]
         if os.path.isdir(season_news):
             data["news"] = os.listdir(season_news)
 
