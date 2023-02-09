@@ -1,6 +1,5 @@
 # Cache
 __pycache__/
-garchive/__pycache__
 
-# Hide data folder
-data/
+# Hide webp images
+*.webp

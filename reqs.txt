@@ -1,4 +1,4 @@
 jinja2
+pillow
 uvicorn
 blacksheep
-apscheduler

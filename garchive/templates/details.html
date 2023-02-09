@@ -112,8 +112,9 @@
                 let container = document.createElement("a");
                 let image = document.createElement("img");
                 let fileName = document.createElement("p");
-                container.href = image.src = "/~/seasons/{{ data['id'] }}/gallery/" + images[i];
-                fileName.innerText = images[i];
+                image.src = "/~/seasons/{{ data['id'] }}/gallery/" + images[i];
+                container.href = image.src.replace(".webp", ".png")
+                fileName.innerText = images[i].replace(".webp", ".png");
                 container.appendChild(image);
                 container.appendChild(fileName);
                 galleryElement.appendChild(container);

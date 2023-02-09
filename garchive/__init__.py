@@ -3,25 +3,20 @@
 # Modules
 import os
 import sys
+from PIL import Image
 from jinja2 import FileSystemLoader
 from blacksheep import Application
 from blacksheep.server.templating import use_templates
 
-from .static import serve_files_dynamic
+from .logging import logger
 
 # Initialization
 root = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
 app = Application(debug = "--reload" in sys.argv)
-serve_files_dynamic(
-    app.router,
-    app.files_handler,
+app.serve_files(
     os.path.join(root, "garchive/static"),
     root_path = "~",
-    extensions = (".css", ".ico", ".mp3", ".png", ".zip"),
-    discovery = False,
-    cache_time = 10800,
-    index_document = "index.html",
-    fallback_document = None
+    extensions = (".css", ".ico", ".mp3", ".png", ".zip", ".webp")
 )
 
 # Jinja2 setup
@@ -36,9 +31,23 @@ view = use_templates(
 # Clean up HTML output
 app.jinja_environment.lstrip_blocks = True
 
-# Start username identification
-from .identity import start_loop, match_ip  # noqa: all
-start_loop()
+# Convert PNGs to webp
+logger.info("Converting PNGs to Webp ...")
+for path, _, files in os.walk(os.path.join(root, "garchive/static/seasons")):
+    for file in files:
+        if file.split(".")[-1] != "png":
+            continue
+
+        webp_path = os.path.join(path, file.replace(".png", ".webp"))
+        if os.path.isfile(webp_path):
+            continue
+
+        # Convert file
+        image = Image.open(os.path.join(path, file)).convert("RGB")
+        image.save(webp_path, "webp")
+        logger.info(f"[Webp]: {file}")
+
+logger.info("All PNGs successfully converted to Webp!")
 
 # Routes
 from .routes import *  # noqa: all
