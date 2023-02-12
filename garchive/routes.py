@@ -7,7 +7,7 @@ import time
 from blacksheep import Request
 from blacksheep.server.responses import not_found
 
-from garchive import app, root, view
+from . import app, root, view
 
 # Configuration
 season_folder = os.path.join(root, "garchive/static/seasons")

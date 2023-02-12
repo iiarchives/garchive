@@ -3,12 +3,14 @@
 # Modules
 import os
 import sys
+import asyncio
 from PIL import Image
 from jinja2 import FileSystemLoader
 from blacksheep import Application
 from blacksheep.server.templating import use_templates
 
 from .logging import logger
+from .minecraft import fetch_status, ServerStatus
 
 # Initialization
 root = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
@@ -48,6 +50,22 @@ for path, _, files in os.walk(os.path.join(root, "garchive/static/seasons")):
         logger.info(f"[Webp]: {file}")
 
 logger.info("All PNGs successfully converted to Webp!")
+
+# Launch status checks
+if os.getenv("GC_ADDRESS"):
+    server_status = ServerStatus()
+
+    # Start background checks
+    async def conf_bgtasks(app):
+        asyncio.get_event_loop().create_task(fetch_status(app, server_status))
+
+    app.on_start += conf_bgtasks
+
+    # Handle routing
+    async def route_status() -> dict:
+        return server_status.to_json()
+
+    app.router.add_get("/status", route_status)
 
 # Routes
 from .routes import *  # noqa: all
