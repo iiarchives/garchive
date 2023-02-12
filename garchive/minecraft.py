@@ -32,7 +32,7 @@ async def fetch_status(app: Application, serverstats: ServerStatus) -> None:
 
         except Exception as e:
             logger.error("Failed fetching server stats!")
-            logger.error(e)
+            return logger.error(e)
 
         # Update app service
         serverstats.members = [
