@@ -10,9 +10,9 @@
                 <h3>Gallery</h3>
                 <div id="details-gallery-images"></div>
                 <div id="details-gallery-buttons">
-                    <button onclick="galleryPreviousPage()"><span>←</span></button>
+                    <button onclick="galleryPrevious()"><span>←</span></button>
                     <span id="details-gallery-page"></span>
-                    <button onclick="galleryNextPage()"><span>→</span></button>
+                    <button onclick="galleryNext()"><span>→</span></button>
                 </div>
             </div>
         </div>
@@ -27,7 +27,7 @@
                 {% if data["members"] %}
                     <ul>
                         {% for member in data["members"] %}
-                            <li>{{ member }}</li>
+                            <li><p>{{ member }}</p></li>
                         {% endfor %}
                     </ul>
                 {% else %}
@@ -55,7 +55,7 @@
                 {% if data["accomplishments"] %}
                     <ul>
                         {% for accomplishment in data["accomplishments"] %}
-                        <li>{{ accomplishment }}</li>
+                        <li><p>{{ accomplishment }}</p></li>
                         {% endfor %}
                     </ul>
                 {% else %}
@@ -93,15 +93,29 @@
         let galleryCount = 0;
         let galleryElement = document.getElementById("details-gallery-images");
         let galleryImages = "{{ '|'.join(data['gallery']) }}".split("|");
-        let galleryMax = Math.max(Math.ceil(galleryImages.length / 15), 1);
+        let galleryLimit = 0;
+        let galleryMax = 0;
         let galleryPage = document.getElementById("details-gallery-page");
-        galleryRenderPage();
+        let galleryStatic = "/~/seasons/{{ data['id'] }}/gallery/";
 
         // Functions
-        function galleryRenderPage() {
+        function galleryNext() {
+            if((galleryCount + 1) * galleryLimit >= galleryImages.length) return;
+            galleryCount++;
+            galleyRender();
+        }
+
+        function galleryPrevious() {
+            if(galleryCount <= 0) return;
+            galleryCount--;
+            galleryPage.innerText = galleryCount.toString() + " of " + galleryMax.toString();
+            galleyRender();
+        }
+
+        function galleyRender() {
             galleryElement.replaceChildren();
             galleryPage.innerText = (galleryCount + 1).toString() + " of " + galleryMax.toString();
-            let images = galleryImages.slice(galleryCount * 15, (galleryCount + 1) * 15);
+            let images = galleryImages.slice(galleryCount * galleryLimit, (galleryCount + 1) * galleryLimit);
             if(!images.length) {
                 let message = document.createElement("p");
                 message.innerText = "The gallery is empty! Come back later~";
@@ -112,8 +126,8 @@
                 let container = document.createElement("a");
                 let image = document.createElement("img");
                 let fileName = document.createElement("p");
-                image.src = "/~/seasons/{{ data['id'] }}/gallery/" + images[i].slice(0, -3) + "webp";
-                container.href = image.src.slice(0, -4) + "png";
+                container.href = galleryStatic  + images[i].slice(0, -3) + "png";
+                image.src = galleryStatic + images[i].slice(0, -3) + "webp";
                 fileName.innerText = images[i];
                 container.appendChild(image);
                 container.appendChild(fileName);
@@ -121,17 +135,19 @@
             }
         }
 
-        function galleryPreviousPage() {
-            if(galleryCount <= 0) return;
-            galleryCount--;
-            galleryPage.innerText = galleryCount.toString() + " of " + galleryMax.toString();
-            galleryRenderPage();
+        function galleryResize() {
+            let previous = galleryLimit;
+            galleryLimit = window.innerWidth < 1000 ? 5 : 20;
+            if(previous === galleryLimit) return;
+            galleryCount = Math.round(galleryCount * previous / galleryLimit);
+            galleryMax = Math.max(Math.ceil(galleryImages.length / galleryLimit), 1);
+            galleyRender();
         }
 
-        function galleryNextPage() {
-            if((galleryCount + 1) * 15 >= galleryImages.length) return;
-            galleryCount++;
-            galleryRenderPage();
-        }
+        // Events
+        addEventListener("resize", event => galleryResize());
+
+        // Executes
+        galleryResize();
     </script>
 {% endblock %}

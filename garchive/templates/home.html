@@ -6,4 +6,17 @@
     <p>hello this is an archive website, feel free to look around</p>
     <br>
     <p>we will prob add cooler stuff later</p>
+    <p id="players">
+        
+    </p>
+    <script>
+        async function statusFetch() {
+            try {
+                return await (await fetch("/status")).json();
+            }
+            catch(error) {
+                throw error;
+            }
+        }
+    </script>
 {% endblock %}

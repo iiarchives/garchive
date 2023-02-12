@@ -36,7 +36,7 @@ async def fetch_status(app: Application, serverstats: ServerStatus) -> None:
 
         # Update app service
         serverstats.members = [
-            {"name": m.name, "image": f"https://crafatar.com/renders/head/{m.id}"} for m in status.players.sample
+            {"name": m.name, "image": f"https://crafatar.com/renders/head/{m.id}"} for m in status.players.sample or []
         ]
         serverstats.ping = round(status.latency, 2)
 

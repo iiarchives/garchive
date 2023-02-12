@@ -5,17 +5,3 @@
     </p>
 </div>
 <hr>
-<div id="gallery-news">
-    <h3>Weekly Honk</h3>
-    <!-- <select>
-        {# for a in data["news"] #}
-            <option>{# a.split(".")[0] #}</option>
-        {# endfor #}
-    </select> -->
-    {% if news %}
-        {% include "seasons/3-spring/news/" + news + ".html" %}
-    {% else %}
-        <p>We can't find that in our archive! Sorry~</p>
-    {% endif %}
-</div>
-<hr>
