@@ -24,18 +24,18 @@ main hr {
     min-width: 300px;
 }
 
-#details-content h3 {
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 20px;
-    margin: 10px 0;
-}
-
 #details-content a, #details-content p, #details-content span {
     font-size: 15px;
     font-weight: 200;
     line-height: 15px;
     text-decoration: none;
+}
+
+#details-content h3 {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 20px;
+    margin: 10px 0;
 }
 
 /* Details - Gallery - Buttons */
@@ -98,11 +98,11 @@ main hr {
     width: 300px;
 }
 
-#details-info h3 {
+#details-info a, #details-info p, #details-info span {
     font-size: 15px;
-    font-weight: 700;
+    font-weight: 200;
     line-height: 15px;
-    margin: 10px 0;
+    text-decoration: none;
 }
 
 #details-info a:hover {
@@ -111,11 +111,11 @@ main hr {
     text-decoration-thickness: 3px;
 }
 
-#details-info a, #details-info p, #details-info span {
+#details-info h3 {
     font-size: 15px;
-    font-weight: 200;
+    font-weight: 700;
     line-height: 15px;
-    text-decoration: none;
+    margin: 10px 0;
 }
 
 #details-info ul {

@@ -59,3 +59,7 @@ async def route_details(request: Request, sid: str, news: str = "latest") -> Non
             "news": news if os.path.isfile(os.path.join(season_path, "news", news + ".html")) else None
         }
     )
+
+@app.route("/you-egged-up")
+async def route_home() -> None:
+    return await view("abcdefgg", {})
