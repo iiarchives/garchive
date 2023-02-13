@@ -40,7 +40,7 @@
 body {
     animation: scrollPanorama 300s linear infinite;
     background-color: var(--theme-dark);
-    background-image: url("/~/assets/background.png");
+    background-image: url("/~/assets/background.webp");
     display: flex;
     flex-direction: column;
     min-width: 500px;

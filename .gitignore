@@ -2,4 +2,4 @@
 __pycache__/
 
 # Hide webp images
-*.webp
+garchive/static/seasons/*/gallery/*.webp
