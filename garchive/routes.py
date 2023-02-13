@@ -61,5 +61,5 @@ async def route_details(request: Request, sid: str, news: str = "latest") -> Non
     )
 
 @app.route("/you-egged-up")
-async def route_home() -> None:
+async def route_egged_up() -> None:
     return await view("abcdefgg", {})
