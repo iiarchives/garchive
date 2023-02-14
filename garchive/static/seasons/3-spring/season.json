@@ -1,7 +1,10 @@
 {
     "accomplishments": [
         "Stable economy",
-        "DmmD learning how to do 2-block wall jumps"
+        "DmmD learning how to do 2-block wall jumps",
+        "Ender dragon no longer exists",
+        "Mayor election (ofc DmmD won)",
+        "Efficient end XP farm"
     ],
     "description": "Early vanilla season 3 in spring!",
     "end": null,
@@ -10,7 +13,13 @@
         "iiPython_",
         "pwffy"
     ],
-    "modifications": [],
+    "modifications": [
+        {
+            "name": "GSit",
+            "type": "Plugin",
+            "url": "https://www.spigotmc.org/resources/gsit-modern-sit-seat-and-chair-lay-and-crawl-plugin-1-13-x-1-19-x.62325/"
+        }
+    ],
     "name": "Season 3: Spring Edition",
     "start": "Feb. 4th, 2023",
     "timestamp": 1675468800000,
