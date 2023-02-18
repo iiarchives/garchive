@@ -7,7 +7,7 @@
         <link rel="icon" type="image/x-icon" href="/~/assets/favicon.ico">
         <link rel="stylesheet" type="text/css" href="/~/css/defaults.css">
         <link rel="stylesheet" type="text/css" href="/~/css/base.css">
-        {% for stylesheet in stylesheets or [] %}<link rel="stylesheet" type="text/css" href="/~/css/{{stylesheet}}">{% endfor %}
+        {% for sheet in (styles or []) %}<link rel="stylesheet" type="text/css" href="/~/css/{{ sheet }}">{% endfor %}
         <title>Geesecraft - {{ title }}</title>
         <meta content="Geesecraft" property="og:title"/>
         <meta content="A Minecraft server hosted by the geese! Honk!" property="og:description"/>
