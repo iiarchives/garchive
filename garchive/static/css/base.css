@@ -1,25 +1,4 @@
-/* Variables */
-:root {
-    --theme-dark: #121212;
-    --theme-dark-transparent: #1212128f;
-    --theme-gray: #6f6f6f;
-    --theme-gray-transparent: #6f6f6f8f;
-    --theme-gray-bright: #8f8f8f;
-    --theme-gray-dim: #4f4f4f;
-    --theme-gray-dim-transparent: #4f4f4f8f;
-    --theme-green: #4fff4f;
-    --theme-green-transparent: #4fff4f8f;
-    --theme-light: #fefefe;
-    --theme-light-transparent: #fefefe8f;
-    --theme-light-dim: #dcdcdc;
-    --theme-light-dim-transparent: #dcdcdc8f;
-    --theme-red: #ff4f4f;
-    --theme-red-transparent: #ff4f4f8f;
-    --theme-yellow: #ffff4f;
-    --theme-yellow-transparent: #ffff4f8f;
-}
-
-/* Animations */
+/* Body */
 @keyframes scrollPanorama {
     from {
         background-position: 0 0;
@@ -29,185 +8,19 @@
     }
 }
 
-/* Defaults */
-* {
-    color: var(--theme-light);
-    font-family: "Roboto", sans-serif;
-    margin: 0;
-    padding: 0;
-}
-
 body {
     animation: scrollPanorama 300s linear infinite;
-    background-color: var(--theme-dark);
+    background-color: rgb(var(--theme-dark));
     background-image: url("/~/assets/background.webp");
-    display: flex;
-    flex-direction: column;
-    min-width: 500px;
     min-height: 100vh;
+    min-width: 750px;
 }
 
-/* Navigation Bar */
-nav {
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: center;
-    min-height: 25px;
-    padding: 20px 25px;
-}
-
-nav div {
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-/* Navigation Bar - Left */
-#nav-left {
-    gap: 5px;
-    min-width: 200px;
-}
-
-#nav-left h1 {
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 20px;
-}
-
-#nav-left img {
-    height: 25px;
-}
-
-/* Navigation Bar - Center */
-#nav-center {
-    flex: 1;
-    min-width: 500px;
-}
-
-#nav-center a {
-    font-size: 15px;
-    font-weight: 200;
-    line-height: 15px;
-    text-decoration: none;
-}
-
-#nav-center a:hover {
-    color: var(--theme-light-dim);
-}
-
-#nav-center ul {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 25px;
-}
-
-#nav-center li {
-    list-style: none;
-}
-
-#nav-center img {
-    height: 10px;
-    padding-left: 5px;
-}
-
-/* Nagivation Bar - Right */
-#nav-right {
-    gap: 25px;
-    min-width: 200px;
-}
-
-#nav-right a {
-    font-size: 15px;
-    font-weight: 200;
-    line-height: 15px;
-    text-decoration: none;
-}
-
-#nav-right a:hover {
-    color: var(--theme-light-dim);
-}
-
-#nav-right button {
-    background: none;
-    border: none;
-}
-
-#nav-right button:hover {
-    cursor: pointer;
-}
-
-#nav-right button:hover > span {
-    color: var(--theme-light-dim);
-}
-
-#nav-right span {
-    font-size: 15px;
-    font-weight: 200;
-    line-height: 15px;
-}
+/* Navigation */
 
 /* Main */
 main {
-    flex: 1;
-    padding: 25px 100px;
+    margin: 25px 50px;
 }
 
 /* Footer */
-footer {
-    height: 100px;
-    position: relative;
-    width: 100%;
-}
-
-footer span {
-    font-size: 15px;
-    font-weight: 200;
-    line-height: 15px;
-    position: absolute;
-}
-
-/* Footer - Update */
-#footer-update {
-    bottom: 10px;
-    left: 15px;
-}
-
-/* Footer - Credits */
-#footer-credits {
-    bottom: 10px;
-    right: 15px;
-}
-
-#footer-credits a {
-    text-decoration: none;
-}
-
-#footer-credits a:hover {
-    color: var(--theme-light-dim);
-    text-decoration: underline;
-    text-decoration-thickness: 3px;
-}
-
-/* Scroll Bars */
-::-webkit-scrollbar {
-    height: 3px;
-    width: 3px;
-}
-  
-::-webkit-scrollbar-track {
-    background: var(--theme-gray-dim);
-}
-
-::-webkit-scrollbar-thumb {
-    background: var(--theme-gray-bright);
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: var(--theme-gray);
-}

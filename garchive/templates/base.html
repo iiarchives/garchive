@@ -5,35 +5,39 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" type="image/x-icon" href="/~/assets/favicon.ico">
+        <link rel="stylesheet" type="text/css" href="/~/css/defaults.css">
         <link rel="stylesheet" type="text/css" href="/~/css/base.css">
-        {# Load second CSS sheet if we have one #}
-        {% if localCSS %}<link rel="stylesheet" type="text/css" href="/~/{{ localCSS }}">{% endif %}
-        {% if data and "id" in data %}<link rel="stylesheet" type="text/css" href="/~/seasons/{{ data['id'] }}/season.css">{% endif %}
-        <title>Geesecraft</title>
+        {% for stylesheet in stylesheets or [] %}<link rel="stylesheet" type="text/css" href="/~/css/{{stylesheet}}">{% endfor %}
+        <title>Geesecraft - {{ title }}</title>
+        <meta content="Geesecraft" property="og:title"/>
+        <meta content="A Minecraft server hosted by the geese! Honk!" property="og:description"/>
+        <meta content="https://gc.iipython.cf/" property="og:url"/>
+        <meta content="/~/assets/bread.webp" property="og:image"/>
+        <meta content="#121212" data-react-helmet="true" name="theme-color"/>
     </head>
     <body>
         <nav>
-            <div id="nav-left">
-                <img src="/~/assets/bread.png">
-                <h1 id="nav-title">Geesecraft</h1>
-            </div>
-            <div id="nav-center">
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/seasons">Seasons</a></li>
-                    <li><a href="https://discord.gg/HYgcp85g6u" target="_blank" rel="noopener noreferrer">Discord<img src="/~/assets/external.webp"></a></li>
-                </ul>
-            </div>
-            <div id="nav-right">
-                <a href="/seasons/3-spring">Latest Season</a>
-                <button onclick="new Audio('/~/sounds/honk.mp3').play()"><span id="nav-honk-text">HONK!</span></button>
-            </div>
+            <h1><img src="/~/assets/bread.webp" height="25px">Geesecraft</h1>
+            <ul></ul>
         </nav>
-        <main>{% block content %}{% endblock %}</main>
+        <main>
+            <h2>Title</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec pulvinar urna, sed vehicula diam. Aliquam eu tortor volutpat, volutpat enim vitae, sodales felis. Pellentesque eu aliquam enim. Duis enim tellus, sollicitudin quis faucibus quis, porta ut ipsum. Pellentesque ullamcorper, erat non convallis sollicitudin, lorem eros fermentum ante, sit amet rutrum augue arcu et dolor. Sed accumsan vel velit eget mollis. Etiam felis ex, scelerisque id odio vitae, sodales finibus dolor. Sed ultricies dignissim tortor a accumsan.</p>
+            <p>Etiam ante tortor, sagittis eget felis id, feugiat sodales magna. Nulla tortor arcu, eleifend a mi eu, pellentesque finibus erat. Vestibulum vehicula eget orci nec consequat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Morbi rutrum volutpat neque eu pretium. Etiam eleifend dolor sapien, sit amet gravida diam convallis tincidunt. Phasellus sed quam pulvinar, lacinia nulla non, volutpat arcu. Nunc et augue convallis, vehicula felis et, maximus justo. Maecenas bibendum velit non metus posuere venenatis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+            <hr>
+            <h2>Title 2</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec pulvinar urna, sed vehicula diam. Aliquam eu tortor volutpat, volutpat enim vitae, sodales felis. Pellentesque eu aliquam enim. Duis enim tellus, sollicitudin quis faucibus quis, porta ut ipsum. Pellentesque ullamcorper, erat non convallis sollicitudin, lorem eros fermentum ante, sit amet rutrum augue arcu et dolor. Sed accumsan vel velit eget mollis. Etiam felis ex, scelerisque id odio vitae, sodales finibus dolor. Sed ultricies dignissim tortor a accumsan.</p>
+            <p>Etiam ante tortor, sagittis eget felis id, feugiat sodales magna. Nulla tortor arcu, eleifend a mi eu, pellentesque finibus erat. Vestibulum vehicula eget orci nec consequat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Morbi rutrum volutpat neque eu pretium. Etiam eleifend dolor sapien, sit amet gravida diam convallis tincidunt. Phasellus sed quam pulvinar, lacinia nulla non, volutpat arcu. Nunc et augue convallis, vehicula felis et, maximus justo. Maecenas bibendum velit non metus posuere venenatis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+            <hr>
+            <h2>Title 3</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec pulvinar urna, sed vehicula diam. Aliquam eu tortor volutpat, volutpat enim vitae, sodales felis. Pellentesque eu aliquam enim. Duis enim tellus, sollicitudin quis faucibus quis, porta ut ipsum. Pellentesque ullamcorper, erat non convallis sollicitudin, lorem eros fermentum ante, sit amet rutrum augue arcu et dolor. Sed accumsan vel velit eget mollis. Etiam felis ex, scelerisque id odio vitae, sodales finibus dolor. Sed ultricies dignissim tortor a accumsan.</p>
+            <p>Etiam ante tortor, sagittis eget felis id, feugiat sodales magna. Nulla tortor arcu, eleifend a mi eu, pellentesque finibus erat. Vestibulum vehicula eget orci nec consequat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Morbi rutrum volutpat neque eu pretium. Etiam eleifend dolor sapien, sit amet gravida diam convallis tincidunt. Phasellus sed quam pulvinar, lacinia nulla non, volutpat arcu. Nunc et augue convallis, vehicula felis et, maximus justo. Maecenas bibendum velit non metus posuere venenatis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+            <hr>
+            <h2>Title 4</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec pulvinar urna, sed vehicula diam. Aliquam eu tortor volutpat, volutpat enim vitae, sodales felis. Pellentesque eu aliquam enim. Duis enim tellus, sollicitudin quis faucibus quis, porta ut ipsum. Pellentesque ullamcorper, erat non convallis sollicitudin, lorem eros fermentum ante, sit amet rutrum augue arcu et dolor. Sed accumsan vel velit eget mollis. Etiam felis ex, scelerisque id odio vitae, sodales finibus dolor. Sed ultricies dignissim tortor a accumsan.</p>
+            <p>Etiam ante tortor, sagittis eget felis id, feugiat sodales magna. Nulla tortor arcu, eleifend a mi eu, pellentesque finibus erat. Vestibulum vehicula eget orci nec consequat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Morbi rutrum volutpat neque eu pretium. Etiam eleifend dolor sapien, sit amet gravida diam convallis tincidunt. Phasellus sed quam pulvinar, lacinia nulla non, volutpat arcu. Nunc et augue convallis, vehicula felis et, maximus justo. Maecenas bibendum velit non metus posuere venenatis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+        </main>
         <footer>
-            <span id="footer-update">Last Updated Feb. 17th, 2023</span>
-            <span id="footer-credits">Hosted by <a href="https://iipython.cf">iiPython</a> 24/7 | 2021 - 2023</span>
         </footer>
-        <script src="/~/js/secret.js"></script>
     </body>
 </html>

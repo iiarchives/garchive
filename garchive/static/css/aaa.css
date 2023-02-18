@@ -1,0 +1,157 @@
+/* Variables */
+:root {
+    --theme-dark: 18, 18, 18;
+    --theme-gray: 111, 111, 111;
+    --theme-gray-bright: 143, 143, 143;
+    --theme-gray-dim: 79, 79, 79;
+    --theme-light: 254, 254, 254;
+    --theme-light-dim: 220, 220, 220;
+}
+
+/* Defaults */
+* {
+    color: rgb(var(--theme-light));
+    font-family: "Roboto", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-size: 25px;
+    font-weight: bolder;
+    line-height: 35px;
+    margin: 5px 0;
+}
+
+h2 {
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 30px;
+    margin: 5px 0;
+}
+
+a, p, span {
+    font-size: 15px;
+    font-weight: normal;
+    line-height: 25px;
+    margin: 5px 0;
+    text-decoration: none;
+}
+
+a:hover {
+    color: rgb(var(--theme-light-dim));
+}
+
+/* Animations */
+@keyframes scrollPanorama {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 2048px 4096px;
+    }
+}
+
+/* Body */
+body {
+    animation: scrollPanorama 300s linear infinite;
+    background-color: rgb(var(--theme-dark));
+    background-image: url("/~/assets/background.webp");
+    min-height: 100vh;
+    min-width: 750px;
+}
+
+hr {
+    margin: 5px 0;
+}
+
+::-webkit-scrollbar {
+    height: 3px;
+    width: 3px;
+}
+  
+::-webkit-scrollbar-track {
+    background: rgb(var(--theme-gray-dim));
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(var(--theme-gray-bright));
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(var(--theme-gray));
+}
+
+/* Navigation Bar */
+nav, nav a, nav h1, nav ul {
+    align-items: center;
+    display: flex;
+}
+
+nav {
+    flex-wrap: wrap;
+    gap: 10px 50px;
+    justify-content: space-between;
+    min-width: 500px;
+    padding: 10px 25px;
+}
+
+nav a, nav h1 {
+    gap: 5px;
+}
+
+nav button {
+    background: none;
+    border: none;
+}
+
+nav h1 {
+    font-size: 15px;
+    line-height: 25px;
+}
+
+nav img {
+    height: 20px;
+}
+
+nav li:hover span {
+    cursor: pointer;
+}
+
+nav ul {
+    justify-content: center;
+    gap: 25px;
+    list-style: none;
+}
+
+.nav-external {
+    height: 10px;
+}
+
+/* Main */
+main {
+    margin: 0 50px;
+}
+
+/* Footer */
+footer {
+    height: 150px;
+    position: relative;
+}
+
+footer a:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+}
+
+#footer-credits {
+    bottom: 10px;
+    position: absolute;
+    right: 25px;
+}
+
+#footer-date {
+    bottom: 10px;
+    left: 25px;
+    position: absolute;
+}

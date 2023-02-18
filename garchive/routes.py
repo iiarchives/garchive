@@ -35,10 +35,9 @@ async def route_seasons() -> None:
     )
 
 @app.route("/seasons/{sid}")
-async def route_details(request: Request, sid: str, news: str = "latest") -> None:
+async def route_details(request: Request, sid: str) -> None:
     season_path = os.path.join(season_folder, sid)
     season_json = os.path.join(season_path, "season.json")
-    season_news = os.path.join(season_path, "news")
     if not os.path.isfile(season_json):
         return not_found("No such season exists.")
 
@@ -48,18 +47,11 @@ async def route_details(request: Request, sid: str, news: str = "latest") -> Non
         data["id"] = sid
         data["download"] = os.path.isfile(os.path.join(season_path, "download.zip"))
         data["gallery"] = [x for x in os.listdir(os.path.join(season_path, "gallery")) if x.endswith(".png")]
-        if os.path.isdir(season_news):
-            data["news"] = os.listdir(season_news)
 
     # Render template
     return await view(
         "details.html",
         {
-            "data": data,
-            "news": news if os.path.isfile(os.path.join(season_path, "news", news + ".html")) else None
+            "data": data
         }
     )
-
-@app.route("/you-egged-up")
-async def route_egged_up() -> None:
-    return await view("abcdefgg", {})

@@ -18,7 +18,7 @@ app = Application(debug = "--reload" in sys.argv)
 app.serve_files(
     os.path.join(root, "garchive/static"),
     root_path = "~",
-    extensions = (".css", ".js", ".ico", ".mp3", ".png", ".zip", ".webp")
+    extensions = (".css", ".js", ".mp3", ".ico", ".png", ".svg", ".webp", ".zip")
 )
 
 # Jinja2 setup

@@ -1,0 +1,59 @@
+/* Defaults */
+:root {
+    /* Theme - Monochrome */
+    --theme-dark: 18, 18, 18;
+    --theme-gray: 111, 111, 111;
+    --theme-gray-bright: 143, 143, 143;
+    --theme-gray-dim: 79, 79, 79;
+    --theme-light: 254, 254, 254;
+    --theme-light-bright: 255, 255, 255;
+    --theme-light-dim: 220, 220, 220;
+
+    /* Theme - Color */
+    --theme-green: 79, 255, 79;
+    --theme-red: 255, 79, 79;
+    --theme-yellow: 255, 255, 79;
+}
+
+* {
+    color: rgb(var(--theme-light));
+    font-family: "Roboto", sans-serif;
+    font-size: 15px;
+    font-weight: normal;
+    line-height: 20px;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+a, hr, h1, h2, p, span {
+    margin: 10px 0;
+}
+
+button {
+    background: none;
+    border: none;
+}
+
+h1, h2 {
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 30px;
+}
+
+::-webkit-scrollbar {
+    height: 3px;
+    width: 3px;
+}
+  
+::-webkit-scrollbar-track {
+    background: rgb(var(--theme-gray-dim));
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(var(--theme-gray-bright));
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(var(--theme-gray));
+}
