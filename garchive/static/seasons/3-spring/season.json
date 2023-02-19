@@ -20,6 +20,16 @@
             "name": "GSit",
             "type": "Plugin",
             "url": "https://www.spigotmc.org/resources/gsit-modern-sit-seat-and-chair-lay-and-crawl-plugin-1-13-x-1-19-x.62325/"
+        },
+        {
+            "name": "RHLeafDecay",
+            "type": "Plugin",
+            "url": "https://www.spigotmc.org/resources/%E2%98%84%EF%B8%8F-rhleafdecay-fast-and-smooth-leaf-decay-1-13-x-1-19-x.83581/"
+        },
+        {
+            "name": "DiscordSRV",
+            "type": "Plugin",
+            "url": "https://www.spigotmc.org/resources/discordsrv.18494/"
         }
     ],
     "name": "Season 3: Spring Edition",
