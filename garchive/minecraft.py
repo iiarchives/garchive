@@ -5,6 +5,8 @@ import os
 import asyncio
 from mcstatus import JavaServer
 from blacksheep import Application
+from requests import get
+from time import time
 
 from .logging import logger
 
@@ -20,7 +22,7 @@ class ServerStatus(object):
         self.ping = 0
 
     def to_json(self) -> None:
-        return {"members": self.members, "ping": self.ping}
+        return {"members": self.members, "ping": self.ping, "timestamp": round(time() * 1000)}
 
 # Main handler
 async def fetch_status(app: Application, serverstats: ServerStatus) -> None:
@@ -36,7 +38,7 @@ async def fetch_status(app: Application, serverstats: ServerStatus) -> None:
 
         # Update app service
         serverstats.members = [
-            {"name": m.name, "image": f"https://crafatar.com/avatars/{m.id}"} for m in status.players.sample or []
+            get("https://sessionserver.mojang.com/session/minecraft/profile/" + m.id).json() for m in status.players.sample or []
         ]
         serverstats.ping = round(status.latency, 2)
 

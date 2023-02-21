@@ -7,7 +7,7 @@
         <link rel="icon" type="image/x-icon" href="/~/assets/favicon.ico">
         <link rel="stylesheet" type="text/css" href="/~/css/defaults.css">
         <link rel="stylesheet" type="text/css" href="/~/css/base.css">
-        {% for sheet in (styles or []) %}<link rel="stylesheet" type="text/css" href="/~/css/{{ sheet }}">{% endfor %}
+        {% for style in styles or [] %}<link rel="stylesheet" type="text/css" href="/~/css/{{ style }}">{% endfor %}
         <title>Geesecraft - {{ title }}</title>
         <meta content="Geesecraft" property="og:title"/>
         <meta content="A Minecraft server hosted by the geese! Honk!" property="og:description"/>
@@ -17,27 +17,28 @@
     </head>
     <body>
         <nav>
-            <h1><img src="/~/assets/bread.webp" height="25px">Geesecraft</h1>
-            <ul></ul>
+            <h1><img src="/~/assets/bread.webp" height="25px"> Geesecraft</h1>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/seasons">Seasons</a></li>
+                <li><a href="https://discord.gg/HYgcp85g6u" target="_blank" rel="noopener noreferrer">Discord <img src="/~/svgs/external.svg" height="10px"></a></li>
+                <li><a href="https://github.com/iiPythonx/garchive" target="_blank" rel="noopener noreferrer">GitHub <img src="/~/svgs/external.svg" height="10px"></a></li>
+            </ul>
+            <ul>
+                <li><a href="/seasons/latest">Latest Seasons</a></li>
+                <li><button onclick="new Audio('/~/audios/honk.mp3').play()"><span>Honk</span></button></li>
+            </ul>
         </nav>
-        <main>
-            <h2>Title</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec pulvinar urna, sed vehicula diam. Aliquam eu tortor volutpat, volutpat enim vitae, sodales felis. Pellentesque eu aliquam enim. Duis enim tellus, sollicitudin quis faucibus quis, porta ut ipsum. Pellentesque ullamcorper, erat non convallis sollicitudin, lorem eros fermentum ante, sit amet rutrum augue arcu et dolor. Sed accumsan vel velit eget mollis. Etiam felis ex, scelerisque id odio vitae, sodales finibus dolor. Sed ultricies dignissim tortor a accumsan.</p>
-            <p>Etiam ante tortor, sagittis eget felis id, feugiat sodales magna. Nulla tortor arcu, eleifend a mi eu, pellentesque finibus erat. Vestibulum vehicula eget orci nec consequat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Morbi rutrum volutpat neque eu pretium. Etiam eleifend dolor sapien, sit amet gravida diam convallis tincidunt. Phasellus sed quam pulvinar, lacinia nulla non, volutpat arcu. Nunc et augue convallis, vehicula felis et, maximus justo. Maecenas bibendum velit non metus posuere venenatis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
-            <hr>
-            <h2>Title 2</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec pulvinar urna, sed vehicula diam. Aliquam eu tortor volutpat, volutpat enim vitae, sodales felis. Pellentesque eu aliquam enim. Duis enim tellus, sollicitudin quis faucibus quis, porta ut ipsum. Pellentesque ullamcorper, erat non convallis sollicitudin, lorem eros fermentum ante, sit amet rutrum augue arcu et dolor. Sed accumsan vel velit eget mollis. Etiam felis ex, scelerisque id odio vitae, sodales finibus dolor. Sed ultricies dignissim tortor a accumsan.</p>
-            <p>Etiam ante tortor, sagittis eget felis id, feugiat sodales magna. Nulla tortor arcu, eleifend a mi eu, pellentesque finibus erat. Vestibulum vehicula eget orci nec consequat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Morbi rutrum volutpat neque eu pretium. Etiam eleifend dolor sapien, sit amet gravida diam convallis tincidunt. Phasellus sed quam pulvinar, lacinia nulla non, volutpat arcu. Nunc et augue convallis, vehicula felis et, maximus justo. Maecenas bibendum velit non metus posuere venenatis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
-            <hr>
-            <h2>Title 3</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec pulvinar urna, sed vehicula diam. Aliquam eu tortor volutpat, volutpat enim vitae, sodales felis. Pellentesque eu aliquam enim. Duis enim tellus, sollicitudin quis faucibus quis, porta ut ipsum. Pellentesque ullamcorper, erat non convallis sollicitudin, lorem eros fermentum ante, sit amet rutrum augue arcu et dolor. Sed accumsan vel velit eget mollis. Etiam felis ex, scelerisque id odio vitae, sodales finibus dolor. Sed ultricies dignissim tortor a accumsan.</p>
-            <p>Etiam ante tortor, sagittis eget felis id, feugiat sodales magna. Nulla tortor arcu, eleifend a mi eu, pellentesque finibus erat. Vestibulum vehicula eget orci nec consequat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Morbi rutrum volutpat neque eu pretium. Etiam eleifend dolor sapien, sit amet gravida diam convallis tincidunt. Phasellus sed quam pulvinar, lacinia nulla non, volutpat arcu. Nunc et augue convallis, vehicula felis et, maximus justo. Maecenas bibendum velit non metus posuere venenatis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
-            <hr>
-            <h2>Title 4</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec pulvinar urna, sed vehicula diam. Aliquam eu tortor volutpat, volutpat enim vitae, sodales felis. Pellentesque eu aliquam enim. Duis enim tellus, sollicitudin quis faucibus quis, porta ut ipsum. Pellentesque ullamcorper, erat non convallis sollicitudin, lorem eros fermentum ante, sit amet rutrum augue arcu et dolor. Sed accumsan vel velit eget mollis. Etiam felis ex, scelerisque id odio vitae, sodales finibus dolor. Sed ultricies dignissim tortor a accumsan.</p>
-            <p>Etiam ante tortor, sagittis eget felis id, feugiat sodales magna. Nulla tortor arcu, eleifend a mi eu, pellentesque finibus erat. Vestibulum vehicula eget orci nec consequat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Morbi rutrum volutpat neque eu pretium. Etiam eleifend dolor sapien, sit amet gravida diam convallis tincidunt. Phasellus sed quam pulvinar, lacinia nulla non, volutpat arcu. Nunc et augue convallis, vehicula felis et, maximus justo. Maecenas bibendum velit non metus posuere venenatis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
-        </main>
+        <main>{% block main %}{% endblock %}</main>
         <footer>
+            <span id="footer-update">Last Updated - Feb. 20th, 2023</span>
+            <span id="footer-credits">Hosted By <a href="https://iipython.cf">iiPython</a> 24/7 | 2021 ~ 2023</span>
         </footer>
+        <script>
+            let mainSections = document.getElementsByClassName("main-sections");
+            for(let i = 0; i < mainSections.length; i++) {
+                mainSections[i].onclick = () => window.location.href = window.location.origin + "#" + mainSections[i].id;
+            }
+        </script>
     </body>
 </html>

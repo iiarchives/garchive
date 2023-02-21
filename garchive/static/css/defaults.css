@@ -10,7 +10,9 @@
     --theme-light-dim: 220, 220, 220;
 
     /* Theme - Color */
+    --theme-blue: 79, 79, 255;
     --theme-green: 79, 255, 79;
+    --theme-purple: 255, 79, 255;
     --theme-red: 255, 79, 79;
     --theme-yellow: 255, 255, 79;
 }
@@ -26,8 +28,16 @@
     text-decoration: none;
 }
 
-a, hr, h1, h2, p, span {
+a, hr, h1, h2, h3, p, span {
+    align-items: center;
+    display: flex;
+    gap: 5px;
     margin: 10px 0;
+}
+
+a:hover, button:hover * {
+    color: rgb(var(--theme-light-dim));
+    cursor: pointer;
 }
 
 button {
@@ -41,12 +51,28 @@ h1, h2 {
     line-height: 30px;
 }
 
+h3 {
+    font-weight: bold;
+}
+
+img {
+    max-width: 750px;
+}
+
+span {
+    margin: 0;
+}
+
+ul {
+    list-style: none;
+}
+
 ::-webkit-scrollbar {
     height: 3px;
     width: 3px;
 }
-  
-::-webkit-scrollbar-track {
+
+::-webkit-scrollbar-corner {
     background: rgb(var(--theme-gray-dim));
 }
 
@@ -56,4 +82,8 @@ h1, h2 {
 
 ::-webkit-scrollbar-thumb:hover {
     background: rgb(var(--theme-gray));
+}
+  
+::-webkit-scrollbar-track {
+    background: rgb(var(--theme-gray-dim));
 }
