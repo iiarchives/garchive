@@ -4,13 +4,13 @@
 import os
 import sys
 import asyncio
-from PIL import Image
 from jinja2 import FileSystemLoader
 from blacksheep import Application
 from blacksheep.server.templating import use_templates
 
 from .logging import logger
 from .minecraft import fetch_status, ServerStatus
+from .utils import preload_seasons, convert_png_to_webp
 
 # Initialization
 root = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
@@ -34,22 +34,15 @@ view = use_templates(
 app.jinja_environment.lstrip_blocks = True
 
 # Convert PNGs to webp
+seasons_directory = os.path.join(root, "garchive/static/seasons")
 logger.info("Converting PNGs to Webp ...")
-for path, _, files in os.walk(os.path.join(root, "garchive/static/seasons")):
-    for file in files:
-        if file.split(".")[-1] != "png":
-            continue
-
-        webp_path = os.path.join(path, file.replace(".png", ".webp"))
-        if os.path.isfile(webp_path):
-            continue
-
-        # Convert file
-        image = Image.open(os.path.join(path, file)).convert("RGB")
-        image.save(webp_path, "webp")
-        logger.info(f"[Webp]: {file}")
-
+convert_png_to_webp(seasons_directory)
 logger.info("All PNGs successfully converted to Webp!")
+
+# Load seasons into RAM
+logger.info("Loading seasons into RAM ...")
+seasons = preload_seasons(seasons_directory)
+logger.info(f"Preloaded {len(seasons)} seasons into RAM!")
 
 # Launch status checks
 if os.getenv("GC_ADDRESS"):
