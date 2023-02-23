@@ -61,4 +61,4 @@ if os.getenv("GC_ADDRESS"):
     app.router.add_get("/status", route_status)
 
 # Routes
-from .routes import *  # noqa: all
+from .routes import (api, public)  # noqa: all

@@ -5,7 +5,7 @@ import time
 from blacksheep import Request
 from blacksheep.server.responses import not_found
 
-from . import app, view, seasons
+from .. import app, view, seasons
 
 # Routes
 @app.route("/")
