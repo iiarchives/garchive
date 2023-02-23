@@ -1,27 +1,27 @@
-"use strict";
 // Variables
-let statusCache = null;
-let statusClock = document.querySelector("#status-clock");
-let statusLatency = document.querySelector("#status-latency");
-let statusMemberCount = document.querySelector("#status-membercount");
-let statusMemberList = document.querySelector("#status ul");
-let statusPopUp = document.querySelector("#status-uuid");
-let statusRefresh = document.querySelector("#status-update img");
+let statusCache: statusResponse | null = null;
+let statusClock = document.querySelector("#status-clock") as HTMLSpanElement;
+let statusLatency = document.querySelector("#status-latency") as HTMLSpanElement;
+let statusMemberCount = document.querySelector("#status-membercount") as HTMLSpanElement;
+let statusMemberList = document.querySelector("#status ul") as HTMLUListElement;
+let statusPopUp = document.querySelector("#status-uuid") as HTMLSpanElement;
+let statusRefresh = document.querySelector("#status-update img") as HTMLImageElement;
+
 // Functions
-async function statusFetch(force = false) {
-    if (statusCache === null) {
+async function statusFetch(force: boolean = false): Promise<boolean> {
+    if(statusCache === null) {
         console.log("Loading status cache...");
         let cache = localStorage.getItem("statusCache");
-        if (cache !== null) {
+        if(cache !== null) {
             statusCache = JSON.parse(cache);
             console.log("Status cache found!");
             return true;
         }
         console.warn("Status cache miss! Refetching...");
     }
-    if (force || statusCache === null || Date.now() - statusCache.timestamp > 300000) {
+    if(force || statusCache === null || Date.now() - statusCache.timestamp > 300000) {
         console.log("Fetch status...");
-        let response = await (await fetch("/api/status")).json();
+        let response: statusResponse = await (await fetch("/api/status")).json();
         localStorage.setItem("statusCache", JSON.stringify(response));
         statusCache = response;
         console.log("Status fetched successfully!");
@@ -29,20 +29,21 @@ async function statusFetch(force = false) {
     }
     return false;
 }
-function statusUpdate(force = false) {
+
+function statusUpdate(force: boolean = false): void {
     statusFetch(force).then(statusFetched => {
-        if (statusCache !== null) {
+        if(statusCache !== null) {
             statusClock.innerText = `Last Updated: ${Math.max(Math.round((Date.now() - statusCache.timestamp) / 1000), 0)}s Ago`;
-            if (force) {
+            if(force) {
                 statusRefresh.style.transform = "rotate(720deg)";
                 statusRefresh.style.transition = "transform ease 1.5s";
                 setTimeout(() => statusRefresh.style.transform = statusRefresh.style.transition = "", 1500);
             }
-            if (statusFetched) {
+            if(statusFetched) {
                 statusMemberCount.innerText = `${statusCache.members.length} Members Online`;
-                statusLatency.childNodes[0].data = `${statusCache.ping}ms `;
+                (statusLatency.childNodes[0] as Text).data = `${statusCache.ping}ms `;
                 statusMemberList.replaceChildren();
-                for (let i = 0; i < statusCache.members.length + 20; i++) {
+                for(let i = 0; i < statusCache.members.length + 20; i++) {
                     let member = statusCache.members[0];
                     let listItem = document.createElement("li");
                     let span = document.createElement("span");
@@ -60,10 +61,12 @@ function statusUpdate(force = false) {
         }
     });
 }
+
 // Events
 statusMemberList.onscroll = () => statusPopUp.style.transform = "scale(0%)";
 addEventListener("click", statusMemberList.onscroll);
 addEventListener("scroll", statusMemberList.onscroll);
+
 // Loops
 setInterval(() => statusUpdate(), 250);
 statusUpdate();

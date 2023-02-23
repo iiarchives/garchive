@@ -1,129 +1,140 @@
-/* Title */
-main h2 {
-    font-size: 25px;
-    font-weight: 700;
+/* Home */
+main h2 a {
+    align-items: center;
+    display: flex;
+    font-size: 20px;
+    gap: 0 5px;
+    line-height: 25px;
+    text-decoration: none;
+}
+
+main h2 a:hover::after {
+    display: inline-block;
+}
+
+main h2 a::after {
+    background-image: url("/~/svgs/link.svg");
+    background-size: 20px 20px;
+    content: "";
+    display: none;
+    height: 20px;
+    width: 20px;
+}
+
+main p {
+    font-size: 15px;
     line-height: 25px;
 }
 
-main hr {
-    margin: 15px 0;
-}
-
-/* Home */
-#home {
+/* Section - Home */
+#home + div {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 50px;
-    justify-content: center;
+    gap: 10px 50px;
 }
 
-/* Home - Content */
-#home-content {
+#home + div > div:first-child {
     flex: 1;
-    min-width: 300px;
-}
-
-#home-content a, #home-content p, #home-content span {
-    font-size: 15px;
-    font-weight: 200;
-    line-height: 15px;
-    text-decoration: none;
-}
-
-#home-content h3 {
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 20px;
-    margin: 10px 0;
-}
-
-#home-content img {
-    max-width: 100%;
-}
-
-/* Home - Info */
-#home-info {
-    width: 300px;
-}
-
-#home-info a, #home-info p, #home-info span {
-    font-size: 15px;
-    font-weight: 200;
-    line-height: 15px;
-    text-decoration: none;
-}
-
-#home-info a:hover {
-    color: var(--theme-light-dim);
-    text-decoration: underline;
-    text-decoration-thickness: 3px;
-}
-
-#home-info h3 {
-    font-size: 15px;
-    font-weight: 700;
-    line-height: 15px;
-    margin: 10px 0;
 }
 
 /* Status */
-#home-status {
+#status {
+    background-color: rgba(var(--theme-gray-dim), 0.5);
+    border-radius: 5px;
     display: flex;
     flex-direction: column;
-    flex-wrap: nowrap;
+    height: 400px;
+    width: 300px;
 }
 
-#home-status-members {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    gap: 10px;
+#status button {
+    background: none;
+    border: none;
 }
 
-#home-status-members li {
+#status button, #status span {
     align-items: center;
     display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    gap: 5px;
+    font-size: 15px;
+    gap: 0 5px;
+    line-height: 20px;
 }
 
-#home-status-members img {
-    height: 15px;
-}
-
-#home-status-ping {
-    margin: 10px 0;
-}
-
-#home-status-update {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-}
-
-#home-status-button {
-    background-color: var(--theme-gray-dim-transparent);
-    border: none;
-    border-radius: 5px;
-    padding: 5px;
-}
-
-#home-status-button:hover {
-    background-color: var(--theme-gray-transparent);
+#status button:hover {
+    color: rgb(var(--theme-light-dim));
     cursor: pointer;
 }
 
-#home-status-button[disabled]:hover {
-    cursor: not-allowed;
+#status ul {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    list-style: none;
+    overflow-y: auto;
+    margin: 5px 0;
 }
 
-#home-status-button:hover > span {
-    color: var(--theme-light-dim);
+#status ul img {
+    border-radius: 5px;
 }
 
-#home-status-timer {
-    padding: 5px;
+#status ul li {
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 0 10px;
+}
+
+#status ul li:hover {
+    background-color: rgba(var(--theme-gray-dim), 0.5);
+    cursor: pointer;
+}
+
+#status-title {
+    background-image: linear-gradient(to right, rgba(var(--theme-blue), 0.5), rgba(var(--theme-cyan), 0.5));
+    border-radius: 5px 5px 0 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+#status-title span {
+    font-weight: bold;
+    padding: 5px 10px;
+}
+
+#status-footer {
+    border-top: 2px solid rgba(var(--theme-gray), 0.5);
+    margin: 0 10px;
+    padding: 5px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+#status-uuid {
+    background-color: rgba(var(--theme-dark), 0.9);
+    border-radius: 5px;
+    padding: 5px 10px;
+    position: fixed;
+    transform: scale(0%);
+    transition: transform ease 0.1s;
+}
+
+#status-uuid::after {
+    background-color: rgba(var(--theme-dark), 0.9);
+    bottom: -2.5px;
+    left: calc(50% - 2.5px);
+    transform: rotate(45deg);
+    position: absolute;
+    content: "";
+    height: 5px;
+    width: 5px;
+}
+
+/* Media */
+@media (max-width: 750px) {
+    #home + div {
+        flex-direction: column;
+    }
+
+    #status {
+        width: 100%;
+    }
 }

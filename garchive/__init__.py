@@ -18,7 +18,7 @@ app = Application(debug = "--reload" in sys.argv)
 app.serve_files(
     os.path.join(root, "garchive/static"),
     root_path = "~",
-    extensions = (".css", ".js", ".ico", ".mp3", ".png", ".zip", ".webp")
+    extensions = (".css", ".js", ".mp3", ".ico", ".png", ".svg", ".webp", ".zip")
 )
 
 # Jinja2 setup
@@ -58,7 +58,7 @@ if os.getenv("GC_ADDRESS"):
     async def route_status() -> dict:
         return server_status.to_json()
 
-    app.router.add_get("/status", route_status)
+    app.router.add_get("/api/status", route_status)
 
 # Routes
 from .routes import (api, public)  # noqa: all

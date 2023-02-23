@@ -1,72 +1,25 @@
 {% extends "base.html" %}
-{% set localCSS = "css/home.css" %}
-{% block content %}
-    <h2>Home</h2>
-    <hr>
-    <div id="home">
-        <div id="home-content">
-            <div>
-                <h3>Welcome to Geesecraft</h3>
-                <p>
-                    Hello, fellow goose or human! Welcome to the official website of Geesecraft—
-                    a Minecraft server hosted purely for and by the geese! I don't know what else to say.
-                    Maybe I will add more stuff later when I have some ideas.
-                </p>
-                <br>
-                <p>
-                    Wait. I know. Maybe if I pull some images, this page will look fuller...
-                </p>
-                <br>
-                <p>
-                    Let's see...
-                </p>
-                <br>
-                <a href="/~/seasons/3-spring/gallery/welcome_to_geeseville.png">
-                    <img src="/~/seasons/3-spring/gallery/welcome_to_geeseville.webp" width="800px">
-                </a>
-                <br>
-                <p>Source: welcome_to_geeseville.png from Season 3 - Spring Edition</p>
-                <br>
-                <p>
-                    Did that work?
-                </p>
-                <br>
-                <p>
-                    No... Not really.
-                </p>
-                <br>
-                <p>
-                    Whatever. Feel free to explore around. Click on the seasons tab on the top to see all of the seasons.
-                </p>
-                <br>
-                <p>
-                    I also hid a few easter eggs here and there. Can you find them all?
-                </p>
-            </div>
-            <hr>
-            <div>
-                <h3>Title</h3>
-                <p>The thing above me is a title.</p>
-            </div>
-            <hr>
-            <div>
-                <h3>How To Join?</h3>
-                <p>
-                    You need to be whitelisted. But I'm too tired to explain. Just shoot us a Discord message and we can figure this out together! :3
-                </p>
-            </div>
-        </div>
-        <div id="home-info">
-            <div id="home-status">
-                <h3 id="home-status-title">Members (0 Online)</h3>
-                <ul id="home-status-members"></ul>
-                <p id="home-status-ping">Ping: 0 ms</p>
-                <div id="home-status-update">
-                    <button id="home-status-button" disabled><span id="home-status-button-text">Updated (15 s)</span></button>
-                    <span id="home-status-timer">Last Updated: 0 s</span>
-                </div>
-            </div>
-        </div>
+{% set styles = [ "/~/css/home.css" ] %}
+{% set title = "Home" %}
+{% block main %}
+<h2 id="home"><a href="#home">Home</a></h2>
+<div>
+    <div>
+        <p>To Do: Complete Home Page</p>
     </div>
-    <script src="/~/js/status.js"></script>
+    <div id="status">
+        <div id="status-title">
+            <span id="status-membercount">0 Members Online</span>
+            <span id="status-latency">0ms <img src="/~/svgs/status.svg" height="20px"></span>
+        </div>
+        <ul>
+        </ul>
+        <div id="status-footer">
+            <span id="status-clock">Last Updated: 0s Ago</span>
+            <button onclick="if(Date.now() - statusCache.timestamp > 3000) statusUpdate(true);" id="status-update"><img src="/~/svgs/refresh.svg" height="15px"> Update</button>
+        </div>
+        <span id="status-uuid"></span>
+    </div>
+</div>
+<script src="/~/js/status.js"></script>
 {% endblock %}
