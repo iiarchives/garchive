@@ -1,47 +1,174 @@
-/* Body */
-@keyframes scrollPanorama {
-    from {
-        background-position: 0 0;
-    }
-    to {
-        background-position: 2048px 4096px;
-    }
+/* Variables */
+:root {
+    /* Theme - Monochrome */
+    --theme-dark: 18, 18, 18;
+    --theme-dark-bright: 52, 52, 52;
+    --theme-dark-dim: 0, 0, 0;
+    --theme-gray: 111, 111, 111;
+    --theme-gray-bright: 143, 143, 143;
+    --theme-gray-dim: 79, 79, 79;
+    --theme-light: 254, 254, 254;
+    --theme-light-bright: 255, 255, 255;
+    --theme-light-dim: 220, 220, 220;
+
+    /* Theme - Color */
+    --theme-blue: 79, 79, 255;
+    --theme-cyan: 79, 143, 255;
+    --theme-green: 79, 255, 79;
+    --theme-magenta: 255, 79, 255;
+    --theme-orange: 255, 143, 79;
+    --theme-purple: 143, 79, 143;
+    --theme-red: 255, 79, 79;
+    --theme-yellow: 255, 255, 79;
 }
 
+/* Defaults */
+* {
+    color: rgb(var(--theme-light));
+    font-family: "Roboto", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Base */
 html {
     scroll-behavior: smooth;
 }
 
 body {
-    animation: scrollPanorama 300s linear infinite;
+    animation: panorama 300s linear infinite;
     background-color: rgb(var(--theme-dark));
     background-image: url("/~/assets/background.webp");
+    display: flex;
+    flex-direction: column;
     min-height: 100vh;
     min-width: 500px;
 }
 
 /* Navigation */
 nav {
+    align-items: center;
     display: flex;
-    flex-wrap: wrap;
-    gap: 0 50px;
-    justify-content: center;
-    margin: 0 25px;
+    gap: 10px 50px;
+    padding: 10px 25px;
 }
 
-nav h1, nav ul:last-child {
-    flex: 1;
+nav a, nav button, nav h1 {
+    align-items: center;
+    background: none;
+    border: none;
+    display: flex;
+    gap: 0 5px;
+    font-size: 15px;
+    line-height: 25px;
+    text-decoration: none;
+}
+
+nav a:hover, nav button:hover {
+    color: rgb(var(--theme-light-dim));
+}
+
+nav button:hover {
+    cursor: pointer;
+}
+
+nav h1 {
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 30px;
 }
 
 nav ul {
-    align-items: center;
     display: flex;
-    flex-wrap: wrap;
-    gap: 0 25px;
+    gap: 10px 25px;
+    list-style: none;
 }
 
-nav ul:last-child {
+#nav-title {
+    flex: 1;
+}
+
+#nav-miscellaneous {
+    flex: 1;
     justify-content: right;
+}
+
+/* Main */
+main {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 10px 0;
+    padding: 10px 50px;
+}
+
+/* Footer */
+footer {
+    height: 100px;
+    position: relative;
+    width: 100%;
+}
+
+footer a {
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: rgb(var(--theme-light-dim));
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+}
+
+footer span {
+    bottom: 0;
+    font-size: 15px;
+    line-height: 25px;
+    padding: 10px 25px;
+    position: absolute;
+}
+
+#footer-credits {
+    right: 0;
+}
+
+/* Scrol Bar */
+::-webkit-scrollbar {
+    height: 3px;
+    width: 3px;
+}
+
+::-webkit-scrollbar-corner {
+    background: rgb(var(--theme-gray-dim));
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(var(--theme-gray-bright));
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(var(--theme-gray));
+}
+  
+::-webkit-scrollbar-track {
+    background: rgb(var(--theme-gray-dim));
+}
+
+/* Animations */
+@keyframes panorama {
+    from {
+        background-position: var(--panorama-from);
+    }
+    to {
+        background-position: var(--panorama-to);
+    }
+}
+
+/* Media */
+@media (max-width: 750px) {
+    #footer-update {
+        right: 0;
+        bottom: 25px;
+    }
 }
 
 @media (max-width: 1000px) {
@@ -49,61 +176,7 @@ nav ul:last-child {
         flex-direction: column;
     }
 
-    nav h1, nav ul {
-        justify-content: center !important;
-    }
-}
-
-/* Main */
-main {
-    margin: 25px 50px;
-}
-
-/* Sections */
-.section:hover {
-    cursor: pointer;
-}
-
-.section:hover img {
-    display: inline;
-}
-
-.section img {
-    display: none;
-}
-
-/* Footer */
-footer {
-    height: 100px;
-    position: relative;
-    margin: 10px 25px;
-}
-
-footer a, footer p {
-    margin: 0;
-}
-
-footer a:hover {
-    text-decoration: underline;
-    text-decoration-thickness: 3px;
-}
-
-#footer-update {
-    bottom: 0;
-    left: 0;
-    position: absolute;
-}
-
-#footer-credits {
-    bottom: 0;
-    position: absolute;
-    right: 0;
-}
-
-@media (max-width: 750px) {
-    #footer-update {
-        bottom: 25px;
-        left: auto;
-        right: 0;
+    main {
+        padding: 10px 25px;
     }
 }

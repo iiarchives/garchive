@@ -65,7 +65,7 @@ if os.getenv("GC_ADDRESS"):
     async def route_status() -> dict:
         return server_status.to_json()
 
-    app.router.add_get("/status", route_status)
+    app.router.add_get("/api/status", route_status)
 
 # Routes
 from .routes import *  # noqa: all

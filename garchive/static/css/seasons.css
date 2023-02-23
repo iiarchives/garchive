@@ -1,9 +1,7 @@
 /* Seasons */
-main ul {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    justify-content: center;
+main h2 {
+    font-size: 20px;
+    line-height: 25px;
 }
 
 main li {
@@ -21,18 +19,34 @@ main li a {
     flex-direction: column;
     height: 300px;
     margin: 0;
+    text-decoration: none;
     width: 250px;
 }
 
 main li h3 {
     border-radius: 5px 5px 0 0;
     display: block;
+    font-size: 15px;
+    line-height: 20px;
     margin: 0;
     overflow: hidden;
     padding: 10px 25px;
     text-align: center;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+main li p {
+    font-size: 15px;
+    line-height: 20px;
+}
+
+main ul {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
 }
 
 .seasons-active h3 {
@@ -49,6 +63,10 @@ main li h3 {
 .season-date {
     border-top: 2px solid rgba(var(--theme-gray));
     margin: 0 15px;
+}
+
+.season-date p {
+    padding: 5px 0;
 }
 
 .seasons-inactive h3 {

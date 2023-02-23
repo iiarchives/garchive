@@ -5,9 +5,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" type="image/x-icon" href="/~/assets/favicon.ico">
-        <link rel="stylesheet" type="text/css" href="/~/css/defaults.css">
         <link rel="stylesheet" type="text/css" href="/~/css/base.css">
-        {% for style in styles or [] %}<link rel="stylesheet" type="text/css" href="/~/css/{{ style }}">{% endfor %}
+        {% for style in styles or [] %}<link rel="stylesheet" type="text/css" href="{{ style }}">{% endfor %}
         <title>Geesecraft - {{ title }}</title>
         <meta content="Geesecraft" property="og:title"/>
         <meta content="A Minecraft server hosted by the geese! Honk!" property="og:description"/>
@@ -17,16 +16,17 @@
     </head>
     <body>
         <nav>
-            <h1><img src="/~/assets/bread.webp" height="25px"> Geesecraft</h1>
-            <ul>
+            <h1 id="nav-title"><img src="/~/assets/bread.webp" height="25px"> Geesecraft</h1>
+            <ul id="nav-tabs">
                 <li><a href="/">Home</a></li>
                 <li><a href="/seasons">Seasons</a></li>
+                <li><a href="/api">API</a></li>
                 <li><a href="https://discord.gg/HYgcp85g6u" target="_blank" rel="noopener noreferrer">Discord <img src="/~/svgs/external.svg" height="10px"></a></li>
                 <li><a href="https://github.com/iiPythonx/garchive" target="_blank" rel="noopener noreferrer">GitHub <img src="/~/svgs/external.svg" height="10px"></a></li>
             </ul>
-            <ul>
-                <li><a href="/seasons/latest">Latest Seasons</a></li>
-                <li><button onclick="new Audio('/~/audios/honk.mp3').play()"><span>Honk</span></button></li>
+            <ul id="nav-miscellaneous">
+                <li><a href="/seasons/latest">Latest Season</a></li>
+                <li><button onclick="new Audio('/~/audios/honk.mp3').play()">Honk</button></li>
             </ul>
         </nav>
         <main>{% block main %}{% endblock %}</main>
@@ -34,6 +34,12 @@
             <span id="footer-update">Last Updated - Feb. 22th, 2023</span>
             <span id="footer-credits">Hosted By <a href="https://iipython.cf">iiPython</a> 24/7 | 2021 ~ 2023</span>
         </footer>
-        <script src="/~/js/sections.js"></script>
+        <script>
+            let panorama = (localStorage.getItem("panorama") ?? "0px 0px").split(" ");
+            document.querySelector("body").style.backgroundPosition = panorama[0] + " " + panorama[1];
+            document.documentElement.style.setProperty("--panorama-from", panorama[0] + " " + panorama[1]);
+            document.documentElement.style.setProperty("--panorama-to", (parseInt(panorama[0]) + 2048) + "px " + (parseInt(panorama[1]) + 4096) + "px");
+            addEventListener("beforeunload", () => localStorage.setItem("panorama", window.getComputedStyle(document.querySelector("body")).backgroundPosition));
+        </script>
     </body>
 </html>

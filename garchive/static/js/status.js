@@ -1,9 +1,9 @@
 "use strict";
 // Variables
 let statusCache = null;
-let statusLastUpdated = document.querySelector("#status-update p");
-let statusLatency = document.querySelector("#status-title h3:last-child");
-let statusMemberCount = document.querySelector("#status-title h3:first-child");
+let statusClock = document.querySelector("#status-clock");
+let statusLatency = document.querySelector("#status-latency");
+let statusMemberCount = document.querySelector("#status-membercount");
 let statusMemberList = document.querySelector("#status ul");
 let statusPopUp = document.querySelector("#status-uuid");
 let statusRefresh = document.querySelector("#status-update img");
@@ -21,7 +21,7 @@ async function statusFetch(force = false) {
     }
     if (force || statusCache === null || Date.now() - statusCache.timestamp > 300000) {
         console.log("Fetch status...");
-        let response = await (await fetch("/status")).json();
+        let response = await (await fetch("/api/status")).json();
         localStorage.setItem("statusCache", JSON.stringify(response));
         statusCache = response;
         console.log("Status fetched successfully!");
@@ -32,7 +32,7 @@ async function statusFetch(force = false) {
 function statusUpdate(force = false) {
     statusFetch(force).then(statusFetched => {
         if (statusCache !== null) {
-            statusLastUpdated.innerText = `Last Updated: ${Math.max(Math.round((Date.now() - statusCache.timestamp) / 1000), 0)}s Ago`;
+            statusClock.innerText = `Last Updated: ${Math.max(Math.round((Date.now() - statusCache.timestamp) / 1000), 0)}s Ago`;
             if (force) {
                 statusRefresh.style.transform = "rotate(720deg)";
                 statusRefresh.style.transition = "transform ease 1.5s";
@@ -42,19 +42,17 @@ function statusUpdate(force = false) {
                 statusMemberCount.innerText = `${statusCache.members.length} Members Online`;
                 statusLatency.childNodes[0].data = `${statusCache.ping}ms `;
                 statusMemberList.replaceChildren();
-                for (let i = 0; i < statusCache.members.length; i++) {
-                    let member = statusCache.members[i];
+                for (let i = 0; i < statusCache.members.length + 20; i++) {
+                    let member = statusCache.members[0];
                     let listItem = document.createElement("li");
                     let span = document.createElement("span");
-                    span.innerHTML = `<img src="https://crafatar.com/avatars/${member.id}?size=25&overlay"> ${member.name}`;
-                    span.onclick = event => {
-                        setTimeout(() => {
-                            statusPopUp.innerHTML = `UUID: <em>${member.id}</em>`;
-                            statusPopUp.style.transform = "scale(100%)";
-                            statusPopUp.style.left = `${event.clientX - statusPopUp.clientWidth / 2}px`;
-                            statusPopUp.style.top = `${event.clientY - 50}px`;
-                        });
-                    };
+                    span.innerHTML = `<img src="https://crafatar.com/avatars/${member.id}?size=20&overlay"> ${member.name}`;
+                    listItem.onclick = event => setTimeout(() => {
+                        statusPopUp.innerHTML = `UUID: <em>${member.id}</em>`;
+                        statusPopUp.style.transform = "scale(100%)";
+                        statusPopUp.style.left = `${event.clientX - statusPopUp.clientWidth / 2}px`;
+                        statusPopUp.style.top = `${event.clientY - 50}px`;
+                    });
                     listItem.appendChild(span);
                     statusMemberList.appendChild(listItem);
                 }

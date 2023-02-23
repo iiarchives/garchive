@@ -1,21 +1,22 @@
 {% extends "base.html" %}
-{% set styles = [ "home.css" ] %}
+{% set styles = [ "/~/css/home.css" ] %}
 {% set title = "Home" %}
 {% block main %}
-<h2 class="section" id="home">Home</h2>
+<h2 id="home"><a href="#home">Home</a></h2>
 <div>
     <div>
         <p>To Do: Complete Home Page</p>
     </div>
     <div id="status">
         <div id="status-title">
-            <h3>0 Members Online</h3>
-            <h3>0ms <img src="/~/svgs/status.svg" height="15px"></h3>
+            <span id="status-membercount">0 Members Online</span>
+            <span id="status-latency">0ms <img src="/~/svgs/status.svg" height="20px"></span>
         </div>
-        <ul></ul>
-        <div id="status-update">
-            <p>Last Updated: 0s Ago</p>
-            <button onclick="if(Date.now() - statusCache.timestamp > 3000) statusUpdate(true);"><span><img src="/~/svgs/refresh.svg" height="15px"> Update</span></button>
+        <ul>
+        </ul>
+        <div id="status-footer">
+            <span id="status-clock">Last Updated: 0s Ago</span>
+            <button onclick="if(Date.now() - statusCache.timestamp > 3000) statusUpdate(true);" id="status-update"><img src="/~/svgs/refresh.svg" height="15px"> Update</button>
         </div>
         <span id="status-uuid"></span>
     </div>
