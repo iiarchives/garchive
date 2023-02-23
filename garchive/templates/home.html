@@ -2,30 +2,23 @@
 {% set styles = [ "home.css" ] %}
 {% set title = "Home" %}
 {% block main %}
-<h2 class="main-sections" id="home">Home <img src="/~/svgs/link.svg" height="20px"></h2>
+<h2 class="section" id="home">Home</h2>
 <div>
     <div>
-        <p>Welcome to the official website of Geesecraft—a Minecraft server hosted annually purely for and by the geese!</p>
-        <img src="/~/seasons/3-spring/gallery/welcome_to_geeseville.webp" style="border-radius: 10px;" width="100%">
-        <p>Source: Season 3: Spring Edition - Welcomet to Geeseville</p>
-        <p>We are currently still working on the home page. While you are here, feel free to check out the other pages or look through our archives.</p>
+        <p>To Do: Complete Home Page</p>
     </div>
-    <div id="online">
-        <div id="online-title">
+    <div id="status">
+        <div id="status-title">
             <h3>0 Members Online</h3>
             <h3>0ms <img src="/~/svgs/status.svg" height="15px"></h3>
         </div>
         <ul></ul>
-        <div id="online-update">
+        <div id="status-update">
             <p>Last Updated: 0s Ago</p>
             <button onclick="if(Date.now() - statusCache.timestamp > 3000) statusUpdate(true);"><span><img src="/~/svgs/refresh.svg" height="15px"> Update</span></button>
         </div>
-        <span id="online-uuid"></span>
+        <span id="status-uuid"></span>
     </div>
 </div>
-<hr>
-<h2 class="main-sections" id="whats-new">What's New? <img src="/~/svgs/link.svg" height="20px"></h2>
-<p>Literally nothing is new. Come back later~</p>
-<hr>
 <script src="/~/js/status.js"></script>
 {% endblock %}

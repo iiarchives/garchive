@@ -2,6 +2,8 @@
 :root {
     /* Theme - Monochrome */
     --theme-dark: 18, 18, 18;
+    --theme-dark-bright: 52, 52, 52;
+    --theme-dark-dim: 0, 0, 0;
     --theme-gray: 111, 111, 111;
     --theme-gray-bright: 143, 143, 143;
     --theme-gray-dim: 79, 79, 79;
@@ -11,8 +13,11 @@
 
     /* Theme - Color */
     --theme-blue: 79, 79, 255;
+    --theme-cyan: 79, 143, 255;
     --theme-green: 79, 255, 79;
-    --theme-purple: 255, 79, 255;
+    --theme-magenta: 255, 79, 255;
+    --theme-orange: 255, 143, 79;
+    --theme-purple: 143, 79, 143;
     --theme-red: 255, 79, 79;
     --theme-yellow: 255, 255, 79;
 }
@@ -40,7 +45,7 @@ a:hover, button:hover * {
     cursor: pointer;
 }
 
-button {
+button, input {
     background: none;
     border: none;
 }
@@ -51,12 +56,16 @@ h1, h2 {
     line-height: 30px;
 }
 
-h3 {
+h3, strong {
     font-weight: bold;
 }
 
 img {
     max-width: 750px;
+}
+
+input::placeholder {
+    color: rgb(var(--theme-gray));
 }
 
 span {

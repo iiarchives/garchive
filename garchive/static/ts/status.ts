@@ -1,22 +1,11 @@
-// Definitions
-type statusResponse = {
-    members: {
-        id: string,
-        name: string,
-        properties: [ { name: "textures", value: string, signature?: string } ]
-    }[],
-    ping: number,
-    timestamp: number
-};
-
 // Variables
 let statusCache: statusResponse | null = null;
-let statusLastUpdated = document.querySelector("#online-update p") as HTMLParagraphElement;
-let statusLatency = document.querySelector("#online-title h3:last-child") as HTMLHeadingElement;
-let statusMemberCount = document.querySelector("#online-title h3:first-child") as HTMLParagraphElement;
-let statusMemberList = document.querySelector("#online ul") as HTMLUListElement;
-let statusPopUp = document.querySelector("#online-uuid") as HTMLSpanElement;
-let statusRefresh = document.querySelector("#online-update img") as HTMLImageElement;
+let statusLastUpdated = document.querySelector("#status-update p") as HTMLParagraphElement;
+let statusLatency = document.querySelector("#status-title h3:last-child") as HTMLHeadingElement;
+let statusMemberCount = document.querySelector("#status-title h3:first-child") as HTMLParagraphElement;
+let statusMemberList = document.querySelector("#status ul") as HTMLUListElement;
+let statusPopUp = document.querySelector("#status-uuid") as HTMLSpanElement;
+let statusRefresh = document.querySelector("#status-update img") as HTMLImageElement;
 
 // Functions
 async function statusFetch(force: boolean = false): Promise<boolean> {
@@ -44,7 +33,7 @@ async function statusFetch(force: boolean = false): Promise<boolean> {
 function statusUpdate(force: boolean = false): void {
     statusFetch(force).then(statusFetched => {
         if(statusCache !== null) {
-            statusLastUpdated.innerText = `Last Updated: ${Math.round((Date.now() - statusCache.timestamp) / 1000)}s Ago`;
+            statusLastUpdated.innerText = `Last Updated: ${Math.max(Math.round((Date.now() - statusCache.timestamp) / 1000), 0)}s Ago`;
             if(force) {
                 statusRefresh.style.transform = "rotate(720deg)";
                 statusRefresh.style.transition = "transform ease 1.5s";

@@ -1,12 +1,12 @@
 "use strict";
 // Variables
 let statusCache = null;
-let statusLastUpdated = document.querySelector("#online-update p");
-let statusLatency = document.querySelector("#online-title h3:last-child");
-let statusMemberCount = document.querySelector("#online-title h3:first-child");
-let statusMemberList = document.querySelector("#online ul");
-let statusPopUp = document.querySelector("#online-uuid");
-let statusRefresh = document.querySelector("#online-update img");
+let statusLastUpdated = document.querySelector("#status-update p");
+let statusLatency = document.querySelector("#status-title h3:last-child");
+let statusMemberCount = document.querySelector("#status-title h3:first-child");
+let statusMemberList = document.querySelector("#status ul");
+let statusPopUp = document.querySelector("#status-uuid");
+let statusRefresh = document.querySelector("#status-update img");
 // Functions
 async function statusFetch(force = false) {
     if (statusCache === null) {
@@ -32,7 +32,7 @@ async function statusFetch(force = false) {
 function statusUpdate(force = false) {
     statusFetch(force).then(statusFetched => {
         if (statusCache !== null) {
-            statusLastUpdated.innerText = `Last Updated: ${Math.round((Date.now() - statusCache.timestamp) / 1000)}s Ago`;
+            statusLastUpdated.innerText = `Last Updated: ${Math.max(Math.round((Date.now() - statusCache.timestamp) / 1000), 0)}s Ago`;
             if (force) {
                 statusRefresh.style.transform = "rotate(720deg)";
                 statusRefresh.style.transition = "transform ease 1.5s";

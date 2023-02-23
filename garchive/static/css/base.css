@@ -17,6 +17,7 @@ body {
     background-color: rgb(var(--theme-dark));
     background-image: url("/~/assets/background.webp");
     min-height: 100vh;
+    min-width: 500px;
 }
 
 /* Navigation */
@@ -58,16 +59,16 @@ main {
     margin: 25px 50px;
 }
 
-/* Main - Sections */
-.main-sections:hover {
+/* Sections */
+.section:hover {
     cursor: pointer;
 }
 
-.main-sections:hover img {
+.section:hover img {
     display: inline;
 }
 
-.main-sections img {
+.section img {
     display: none;
 }
 
