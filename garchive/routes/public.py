@@ -3,7 +3,7 @@
 # Modules
 import time
 from blacksheep import Request
-from blacksheep.server.responses import not_found
+from blacksheep.server.responses import not_found, see_other
 
 from .. import app, view, seasons
 
@@ -27,7 +27,10 @@ async def route_seasons() -> None:
 
 @app.route("/seasons/{sid}")
 async def route_details(request: Request, sid: str) -> None:
-    if sid not in seasons:
+    if sid == "latest":
+        return see_other(f"/seasons/{sorted(list(seasons.values()), key = lambda s: s['timestamp'] or 0, reverse = True)[0]['id']}")
+
+    elif sid not in seasons:
         return not_found("Season not found.")
 
     # Render template
