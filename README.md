@@ -11,7 +11,7 @@ This activity hub is [garchive](https://github.com/iiPythonx/garchive), the repo
 
 GArchive can be downloaded either via a ZIP file provided by GitHub, or by directly cloning the repository:
 ```sh
-git clone git@github.com:iiPythonx/garchive  # If you use SSH to authentication with GH
+git clone git@github.com:iiPythonx/garchive  # If you use SSH to authenticate with GH
 git clone https://github.com/iiPythonx/garchive  # or if you prefer something simpler
 ```
 
@@ -25,9 +25,14 @@ python3 -m pip install -r reqs.txt
 
 ### Launching
 
-For development, GArchive provides a `launch_debug.py` file that launches the site with one [uvicorn](https://www.uvicorn.org/) worker:
+For development, GArchive provides a very basic `launch.py` file that launches the site with one [uvicorn](https://www.uvicorn.org/) worker:
 ```sh
-python3 launch_debug.py
+python3 launch.py
+```
+
+In production deployments, it is highly recommended to launch using uvicorn like so:
+```sh
+python3 -m gunicorn -k uvicorn.workers.UvicornWorker -b 0.0.0.0:8080 -w 8 garchive:app
 ```
 
 ### Environment
@@ -37,7 +42,7 @@ Please refer to [ENVIRONMENT.md](https://github.com/iiPythonx/garchive/blob/main
 ## Contributors
 
 Most of the backend is maintained by [iiPython](https://github.com/iiPythonx).  
-Meanwhile, [DmmD](https://github.com/DmmDGM) handles the entire frontend and templating system.
+Meanwhile, [DmmD](https://github.com/DmmDGM) handles the frontend and templating system.
 
 ## Built with
 
