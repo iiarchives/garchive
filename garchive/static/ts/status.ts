@@ -43,8 +43,8 @@ function statusUpdate(force: boolean = false): void {
                 statusMemberCount.innerText = `${statusCache.members.length} Members Online`;
                 (statusLatency.childNodes[0] as Text).data = `${statusCache.ping}ms `;
                 statusMemberList.replaceChildren();
-                for(let i = 0; i < statusCache.members.length + 20; i++) {
-                    let member = statusCache.members[0];
+                for(let i = 0; i < statusCache.members.length; i++) {
+                    let member = statusCache.members[i];
                     let listItem = document.createElement("li");
                     let span = document.createElement("span");
                     span.innerHTML = `<img src="https://crafatar.com/avatars/${member.id}?size=20&overlay"> ${member.name}`;

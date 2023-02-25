@@ -55,7 +55,3 @@ async def route_details(request: Request, sid: str) -> None:
             "data": data
         }
     )
-
-@app.route("/")
-async def route_status() -> None:
-    return await view("status", {})
