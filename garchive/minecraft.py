@@ -3,10 +3,9 @@
 # Modules
 import os
 import asyncio
+from time import time
 from mcstatus import JavaServer
 from blacksheep import Application
-from requests import get
-from time import time
 
 from .logging import logger
 
@@ -38,7 +37,7 @@ async def fetch_status(app: Application, serverstats: ServerStatus) -> None:
 
         # Update app service
         serverstats.members = [
-            get("https://sessionserver.mojang.com/session/minecraft/profile/" + m.id).json() for m in status.players.sample or []
+            {"name": u.name, "id": u.id} for u in status.players.sample or []
         ]
         serverstats.ping = round(status.latency, 2)
 
