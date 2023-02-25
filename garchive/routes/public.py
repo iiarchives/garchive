@@ -18,7 +18,7 @@ async def route_seasons() -> None:
         "seasons",
         {
             "seasons": sorted(
-                list(seasons.values()),
+                seasons.values(),
                 key = lambda s: s["timestamp"] or time.time() * 1000,
                 reverse = True
             )
@@ -28,7 +28,7 @@ async def route_seasons() -> None:
 @app.route("/seasons/{sid}")
 async def route_details(request: Request, sid: str) -> None:
     if sid == "latest":
-        return see_other(f"/seasons/{sorted(list(seasons.values()), key = lambda s: s['timestamp'] or 0, reverse = True)[0]['id']}")
+        return see_other(f"/seasons/{sorted(seasons.values(), key = lambda s: s['timestamp'] or 0, reverse = True)[0]['id']}")
 
     elif sid not in seasons:
         return not_found("Season not found.")
