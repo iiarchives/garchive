@@ -12,6 +12,10 @@ from .. import app, view, seasons
 async def route_home() -> None:
     return await view("home", {})
 
+@app.route("/api")
+async def route_api_docs() -> None:
+    return await view("api", {})
+
 @app.route("/seasons")
 async def route_seasons() -> None:
     return await view(
