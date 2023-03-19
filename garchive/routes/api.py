@@ -7,16 +7,13 @@ from .. import app, seasons
 
 # Routes
 @app.route("/api/seasons")
-async def route_api_seasons() -> dict:
-    return {"code": 200, "data": seasons}
+async def route_api_seasons(id: str = None, field: str = None) -> dict:
+    data = seasons
+    if id is not None:
+        data = seasons.get(id)
+        if data is None:
+            return not_found({"code": 404, "message": "Season not found."})
 
-@app.route("/api/seasons/<string:ident>")
-async def route_api_season(ident: str, field: str = None) -> dict:
-    season = seasons.get(ident)
-    if season is None:
-        return not_found({"code": 404, "message": "Season not found."})
+        data = data if field is None else data.get(field)
 
-    return {
-        "code": 200,
-        "data": season if field is None else season.get(field)
-    }
+    return {"code": 200, "data": data}
