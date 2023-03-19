@@ -7,7 +7,7 @@
         "Large Geesetown with bridge"
     ],
     "description": "The first proper Geesecraft season",
-    "end": "Sep. 9, 2022",
+    "end": 1662681600000,
     "members": [
         "tonyz1111",
         "Dm123321_31mD",
@@ -23,7 +23,6 @@
         }
     ],
     "name": "Season 2",
-    "start": "Jun. 16, 2022",
-    "timestamp": 1655337600000,
+    "start": 1655337600000,
     "version": "1.18 - 1.19"
 }

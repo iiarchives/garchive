@@ -6,7 +6,7 @@
         "Slained the Wither"
     ],
     "description": "'iiPython's Minecraft Server'; a.k.a Geesecraft Season 1",
-    "end": "Sep. 15, 2021",
+    "end": 1631664000000,
     "members": [
         "Dm123321_31mD",
         "emiqual",
@@ -25,7 +25,6 @@
         }
     ],
     "name": "Season 1",
-    "start": "May. 17, 2021",
-    "timestamp": 1621209600000,
+    "start": 1621209600000,
     "version": "1.16 - 1.17"
 }
