@@ -15,35 +15,23 @@ async def route_home() -> None:
 async def route_api_docs() -> None:
     return await view("api", {})
 
-@app.route("/seasons")
-async def route_seasons() -> None:
-    return await view(
-        "seasons",
-        {
-            "seasons": sorted(
-                seasons.values(),
-                key = lambda s: s["timestamp"] or time.time() * 1000,
-                reverse = True
-            )
-        }
-    )
+@app.route("/archives")
+async def route_archives() -> None:
+    return await view("archives", {})
 
-@app.route("/seasons/{sid}")
-async def route_details(sid: str) -> None:
-    if sid == "latest":
-        return see_other(f"/seasons/{sorted(seasons.values(), key = lambda s: s['timestamp'] or 0, reverse = True)[0]['id']}")
+@app.route("/archives/{sid}")
+async def route_season(sid: str) -> None:
+    # if sid == "latest":
+    #     return see_other(f"/seasons/{sorted(seasons.values(), key = lambda s: s['timestamp'] or 0, reverse = True)[0]['id']}")
 
-    elif sid not in seasons:
-        return not_found("Season not found.")
+    # elif sid not in seasons:
+    #     return not_found("Season not found.")
 
     # Render template
+    print(sid)
     return await view(
-        "details.html",
-        {
-            "data": seasons[sid]
-        }
+        f"/seasons/{sid}/index", {}
+        # {
+        #     "data": seasons[sid]
+        # }
     )
-
-@app.route("/you-egged-up")
-async def route_egged_up() -> None:
-    return await view("abcdefgg", {})

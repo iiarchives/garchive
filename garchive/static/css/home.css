@@ -1,140 +1,229 @@
-/* Home */
-main h2 a {
+/* Banner */
+#banner {
     align-items: center;
-    display: flex;
-    font-size: 20px;
-    gap: 0 5px;
-    line-height: 25px;
-    text-decoration: none;
-}
-
-main h2 a:hover::after {
-    display: inline-block;
-}
-
-main h2 a::after {
-    background-image: url("/~/svgs/link.svg");
-    background-size: 20px 20px;
-    content: "";
-    display: none;
-    height: 20px;
-    width: 20px;
-}
-
-main p {
-    font-size: 15px;
-    line-height: 25px;
-}
-
-/* Section - Home */
-#home + div {
-    display: flex;
-    gap: 10px 50px;
-}
-
-#home + div > div:first-child {
-    flex: 1;
-}
-
-/* Status */
-#status {
-    background-color: rgba(var(--theme-gray-dim), 0.5);
-    border-radius: 5px;
+    animation: bannerScrolling 300s linear infinite;
+    background-image: url("/~/assets/banner.png");
+    background-position: 50% 50%;
+    background-size: cover;
     display: flex;
     flex-direction: column;
-    height: 400px;
-    width: 300px;
+    gap: 15px 0;
+    height: 500px;
+    justify-content: center;
+    width: 100%;
+}
+
+#banner h2 {
+    font-size: 50px;
+    line-height: 50px;
+    padding: 0 50px;
+}
+
+#banner h3 {
+    font-size: 20px;
+    line-height: 20px;
+    padding: 0 50px;
+    transition: opacity 1s;
+}
+
+@keyframes bannerScrolling {
+    0% {
+        background-position: 50% 50%;
+    }
+
+    25% {
+        background-position: 100% 100%;
+    }
+
+    75% {
+        background-position: 0% 0%;
+    }
+    
+    100% {
+        background-position: 50% 50%;
+    }
+}
+
+/* Videos */
+#videos {
+    align-items: center;
+    display: flex;
+    gap: 25px;
+    padding: 50px 0;
+    flex-direction: column;
+}
+
+#videos h2 {
+    font-size: 25px;
+    line-height: 25px;
+    text-align: center; 
+}
+
+#videos iframe {
+    aspect-ratio: 16/9;
+    width: 800px;
+}
+
+/* Seasons */
+#seasons {
+    display: flex;
+    padding: 50px 0;
+    flex-direction: column;
+    gap: 50px 0;
+}
+
+#seasons h2 {
+    font-size: 25px;
+    line-height: 25px;
+    text-align: center;   
+}
+
+/* Season */
+.season {
+    display: flex;
+    gap: 0 25px;
+    height: 250px;
+    padding: 0 250px;
+}
+
+.season div {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 10px 0;
+}
+
+.season a {
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 20px;
+    text-decoration: none;
+    width: fit-content;
+}
+
+.season a:hover {
+    color: rgb(var(--theme-light-dim));
+}
+
+.season p {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.season img {
+    animation: seasonScrolling 120s linear infinite;
+    border-radius: 5px;
+    height: 250px;
+    width: 400px;
+    object-fit: cover;
+}
+
+@keyframes seasonScrolling {
+    0% {
+        object-position: 50% 50%;
+    }
+
+    25% {
+        object-position: 100% 100%;
+    }
+
+    75% {
+        object-position: 0% 0%;
+    }
+    
+    100% {
+        object-position: 50% 50%;
+    }
+}
+
+/* Latency */
+#status {
+    display: flex;
+    flex-direction: column;
+    gap: 25px 0;
+    padding: 50px 250px;
+}
+
+#status h2 {
+    font-size: 25px;
+    line-height: 25px;
+    text-align: center;   
+}
+
+#status div {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+#status h3 {
+    font-size: 15px;
+    line-height: 15px;
+}
+
+#status ul {
+    display: flex;
+    gap: 10px;
+    list-style: none;
 }
 
 #status button {
     background: none;
     border: none;
-}
-
-#status button, #status span {
-    align-items: center;
-    display: flex;
-    font-size: 15px;
-    gap: 0 5px;
-    line-height: 20px;
+    cursor: pointer;
 }
 
 #status button:hover {
     color: rgb(var(--theme-light-dim));
-    cursor: pointer;
 }
 
-#status ul {
+/* Updates */
+#updates {
     display: flex;
-    flex: 1;
     flex-direction: column;
+    gap: 25px 0;
+    padding: 50px 250px;
+}
+
+#updates h2 {
+    font-size: 25px;
+    line-height: 25px;
+    text-align: center;
+}
+
+#updates ul {
+    display: flex;
+    flex-direction: column;
+    gap: 25px 0;
     list-style: none;
-    overflow-y: auto;
-    margin: 5px 0;
 }
 
-#status ul img {
-    border-radius: 5px;
-}
-
-#status ul li {
-    border-radius: 5px;
-    padding: 5px 10px;
-    margin: 0 10px;
-}
-
-#status ul li:hover {
-    background-color: rgba(var(--theme-gray-dim), 0.5);
-    cursor: pointer;
-}
-
-#status-title {
-    background-image: linear-gradient(to right, rgba(var(--theme-blue), 0.9), rgba(var(--theme-cyan), 0.9));
-    border-radius: 5px 5px 0 0;
+#updates li {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 25px 0;
 }
 
-#status-title span {
-    font-weight: bold;
-    padding: 5px 10px;
+#updates h3 {
+    font-size: 20px;
+    line-height: 20px;
 }
 
-#status-footer {
-    border-top: 2px solid rgba(var(--theme-gray), 0.5);
-    margin: 0 10px;
-    padding: 5px 0;
+/* Frequently Asked Questions */
+#faq {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 25px 0;
+    padding: 50px 250px;
 }
 
-#status-uuid {
-    background-color: rgba(var(--theme-dark), 0.9);
-    border-radius: 5px;
-    padding: 5px 10px;
-    position: fixed;
-    transform: scale(0%);
-    transition: transform ease 0.1s;
+#faq h2 {
+    font-size: 25px;
+    line-height: 25px;
+    text-align: center;
 }
 
-#status-uuid::after {
-    background-color: rgba(var(--theme-dark), 0.9);
-    bottom: -2.5px;
-    left: calc(50% - 2.5px);
-    transform: rotate(45deg);
-    position: absolute;
-    content: "";
-    height: 5px;
-    width: 5px;
-}
-
-/* Media */
-@media (max-width: 750px) {
-    #home + div {
-        flex-direction: column;
-    }
-
-    #status {
-        width: 100%;
-    }
+#faq h3 {
+    font-size: 20px;
+    line-height: 20px;
 }

@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/iiPythonx/garchive/issues"
   },
-  "homepage": "https://github.com/iiPythonx/garchive#readme"
+  "homepage": "https://github.com/iiPythonx/garchive#readme",
+  "dependencies": {
+    "chart.js": "^4.3.0"
+  }
 }

@@ -1,25 +1,95 @@
 {% extends "base.html" %}
-{% set styles = [ "/~/css/home.css" ] %}
 {% set title = "Home" %}
+{% set stylesheets = [ "/~/css/home.css" ] %}
 {% block main %}
-<h2 id="home"><a href="#home">Home</a></h2>
-<div>
-    <div>
-        <p>To Do: Complete Home Page</p>
+<!-- Banner -->
+<div id="banner">
+    <h2>Geesecraft</h2>
+    <h3 id="subtitle">A Minecraft server made of geese, by geese, for geese!</h3>
+</div>
+
+<!-- Videos -->
+<div id="videos">
+    <h2>Geesecraft Moments</h2>
+    <iframe src="https://www.youtube.com/embed/V-zbo6b8gVI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/i8UlwRinp0Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+
+<!-- Seasons -->
+<div id="seasons">
+    <h2>Active Season</h2>
+    <div class="season">
+        <div>    
+            <a href="/archives/3">Season 3</a>
+            <p>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Libero facilis expedita ipsa, recusandae minus labore. Praesentium doloribus, nisi eligendi rerum vero eveniet nemo sed distinctio unde dolorem quod natus. Aliquid!
+                Atque recusandae in aliquam odit autem mollitia, facilis sunt accusamus laboriosam facere saepe expedita iste placeat vero quis. Quasi, ipsam assumenda eum nobis facilis quae eaque. Asperiores qui nesciunt facere!
+                Animi nobis ipsa perspiciatis nisi aut porro consectetur praesentium nostrum dolore, voluptas natus. Ab earum voluptate dolor animi architecto necessitatibus consequuntur at consequatur! Culpa recusandae optio dolores minus reprehenderit expedita.
+                Perspiciatis laborum animi incidunt illo ea non repellat. Rerum nisi ad, neque, cum quas doloremque error cupiditate dolore enim unde, similique facere sunt velit ipsa. In aperiam molestias facere inventore.
+                Ullam dicta velit consectetur sint amet cum hic dolor impedit numquam ea at tempora totam voluptate, incidunt recusandae ducimus, sed asperiores maxime officiis quia. Alias debitis soluta ipsum aperiam sed!
+            </p>
+        </div>
+        <img src="/~/assets/banner.png">
     </div>
-    <div id="status">
-        <div id="status-title">
-            <span id="status-membercount">0 Members Online</span>
-            <span id="status-latency">0ms <img src="/~/svgs/status.svg" height="20px"></span>
+    <h2>Upcoming Season</h2>
+    <div class="season">
+        <img src="/~/assets/banner.png">
+        <div>
+            <a href="/archives/4">Season 4</a>
+            <p>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel quibusdam architecto tempore, suscipit harum dicta iste est, deserunt nostrum, doloremque commodi earum error fuga cupiditate deleniti quaerat quisquam minus. Autem.
+                Ea voluptates sapiente atque molestiae. Nostrum in, odit ipsa praesentium laborum quas? Ratione sequi placeat, dolores officiis culpa vel quibusdam quasi ut vitae impedit quo. Molestiae sint necessitatibus sapiente explicabo.
+                Modi magni ex, unde saepe, quasi iure mollitia quaerat ut voluptatum nemo eaque iste reiciendis qui officia voluptates deleniti. Ut facere similique vero, numquam excepturi natus sequi magni laborum ullam.
+                Vero laboriosam repudiandae alias sint ratione fugiat odit sequi, consequuntur illum et a aperiam numquam dicta facere cupiditate error incidunt repellendus beatae vel? Beatae quod quam modi enim explicabo similique.
+                Aperiam suscipit adipisci provident explicabo. Ipsum voluptates repudiandae doloremque quaerat doloribus, voluptatibus perferendis molestiae! Quos natus, deleniti voluptate odit impedit non saepe! Veritatis, tempore ipsam molestias adipisci vero perspiciatis doloremque?
+            </p>
         </div>
-        <ul>
-        </ul>
-        <div id="status-footer">
-            <span id="status-clock">Last Updated: 0s Ago</span>
-            <button onclick="if(Date.now() - statusCache.timestamp > 3000) statusUpdate(true);" id="status-update"><img src="/~/svgs/refresh.svg" height="15px"> Update</button>
-        </div>
-        <span id="status-uuid"></span>
     </div>
 </div>
-<script src="/~/js/status.js"></script>
+
+<!-- Status -->
+<div id="status">
+    <h2>Geesecraft Status</h2>
+    <div>
+        <h3>Server Latency (ms)</h3>
+        <ul>
+            <li><button id="status-day">Day</button></li>
+            <li><button id="status-week">Week</button></li>
+            <li><button id="status-month">Month</button></li>
+        </ul>
+    </div>
+    <canvas height="250px" id="latency"></canvas>
+</div>
+
+<!-- Updates -->
+<div id="updates">
+    <h2>Geesecraft Updates</h2>
+    <ul>
+        <li>
+            <h3>May 11th</h3>
+            <span>
+                ey i am no longer crashing
+            </span>
+        </li>
+        <li>
+            <h3>May 10th</h3>
+            <span>
+                oh no i crashed
+            </span>
+        </li>
+    </ul>
+</div>
+
+<!-- Frequently Asked Questions -->
+<div id="faq">
+    <h2>Asked Questions</h2>
+    <h3>Q: Why is it called Geesecraft?</h3>
+    <p>A: HONK</p>
+    <h3>Q: How to join Geesecraft?</h3>
+    <p>A: Ok?</p>
+</div>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="/~/js/home.js"></script>
 {% endblock %}

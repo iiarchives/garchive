@@ -1,45 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <!-- Meta -->
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" type="image/x-icon" href="/~/assets/favicon.ico">
-        <link rel="stylesheet" type="text/css" href="/~/css/base.css">
-        {% for style in styles or [] %}<link rel="stylesheet" type="text/css" href="{{ style }}">{% endfor %}
-        <title>Geesecraft - {{ title }}</title>
-        <meta content="Geesecraft" property="og:title"/>
-        <meta content="A Minecraft server hosted by the geese! Honk!" property="og:description"/>
-        <meta content="https://gc.iipython.cf/" property="og:url"/>
-        <meta content="/~/assets/bread.webp" property="og:image"/>
-        <meta content="#121212" data-react-helmet="true" name="theme-color"/>
+
+        <!-- Title -->
+        <title>Geesecraft {{ " - " + title if title }}</title>
+        <link rel="icon" href="/~/assets/favicon.ico" type="image/x-icon">
+
+        <!-- Styles -->
+        <link rel="stylesheet" href="/~/css/base.css" type="text/css">
+        {% for stylesheet in stylesheets %}
+            <link rel="stylesheet" href="{{ stylesheet }}" type="text/css">
+        {% endfor %}
     </head>
     <body>
+        <!-- Navigation Bar -->
         <nav>
-            <h1 id="nav-title"><img src="/~/assets/bread.webp" height="25px"> Geesecraft</h1>
-            <ul id="nav-tabs">
+            <h1 id="logo"><img src="/~/assets/bread.webp"> Geesecraft</h1>
+            <ul id="tabs">
                 <li><a href="/">Home</a></li>
-                <li><a href="/seasons">Seasons</a></li>
+                <li><a href="/archives">Archives</a></li>
                 <li><a href="/api">API</a></li>
-                <li><a href="https://discord.gg/HYgcp85g6u" target="_blank" rel="noopener noreferrer">Discord <img src="/~/svgs/external.svg" height="10px"></a></li>
-                <li><a href="https://github.com/iiPythonx/garchive" target="_blank" rel="noopener noreferrer">GitHub <img src="/~/svgs/external.svg" height="10px"></a></li>
-            </ul>
-            <ul id="nav-miscellaneous">
-                <li><a href="/seasons/latest">Latest Season</a></li>
-                <li><button onclick="new Audio('/~/audios/honk.mp3').play()">Honk</button></li>
+                <li><a href="https://map.iipython.dev" target="_blank" rel="noopener noreferrer">
+                    Map {% include "/svgs/external.svg" %}
+                </a></li>
+                <li><a href="https://discord.gg/HYgcp85g6u" target="_blank" rel="noopener noreferrer">
+                    Discord {% include "/svgs/external.svg" %}
+                </a></li>
+                <li><a href="https://github.com/iiPythonx/garchive" target="_blank" rel="noopener noreferrer">
+                    Github {% include "/svgs/external.svg" %}
+                </a></li>
             </ul>
         </nav>
+
+        <!-- Main -->
         <main>{% block main %}{% endblock %}</main>
+        
+        <!-- Footer -->
         <footer>
-            <span id="footer-update">Last Updated - Feb. 22th, 2023</span>
-            <span id="footer-credits">Hosted By <a href="https://iipython.cf">iiPython</a> 24/7 | 2021 ~ 2023</span>
+            <div id="credits">
+                <h2>Geesecraft</h2>
+                <h3>Contact Us: ben@iipython.dev</h3>
+                <h3>Last Updated: May 14th, 2023</h3>
+                <h3>Hosted 24/7 w/ Honk: <a href="https://iipython.dev">iiPython</a></h3>
+            </div>
+            <img src="/~/assets/bread.webp">
         </footer>
+
+        <!-- Scripts -->
         <script>
-            let panorama = (localStorage.getItem("panorama") ?? "0px 0px").split(" ");
-            document.querySelector("body").style.backgroundPosition = panorama[0] + " " + panorama[1];
-            document.documentElement.style.setProperty("--panorama-from", panorama[0] + " " + panorama[1]);
-            document.documentElement.style.setProperty("--panorama-to", (parseInt(panorama[0]) + 2048) + "px " + (parseInt(panorama[1]) + 4096) + "px");
-            addEventListener("beforeunload", () => localStorage.setItem("panorama", window.getComputedStyle(document.querySelector("body")).backgroundPosition));
+            void function() {
+                let honk = new Audio("/~/audios/honk.mp3");
+                document.getElementById("logo").onclick = () => honk.play();
+            }();
         </script>
     </body>
 </html>

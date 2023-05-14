@@ -1,0 +1,95 @@
+/* Archives */
+#archives {
+    display: flex;
+    flex-direction: column;
+    gap: 25px 0;
+    padding: 50px 250px;
+}
+
+#archives h2 {
+    font-size: 25px;
+    line-height: 25px;
+    text-align: center;
+}
+
+#archives h3 {
+    text-align: center;
+}
+
+/* Seasons */
+#seasons {
+    display: flex;
+    flex-direction: column;
+    gap: 25px 0;
+    list-style: none;
+}
+
+/* Season */
+.season {
+    background-color: rgba(var(--theme-gray-dim), 0.5);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px 0;
+    height: 150px;
+    padding: 15px 25px;
+    position: relative;
+}
+
+.season a {
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 20px;
+    padding: 5px 0;
+    text-decoration: none;
+    width: fit-content;
+}
+
+.season a:hover {
+    color: rgb(var(--theme-light-dim));
+}
+
+.season p {
+    flex: 1;
+    flex-wrap: nowrap;
+    overflow-y: auto;
+}
+
+.season ul {
+    display: flex;
+    gap: 0 5px;
+    list-style: none;
+    overflow-x: auto;
+    padding: 5px 0;
+}
+
+.season li {
+    background-color: rgba(var(--theme-gray-dim), 0.5);
+    border-radius: 5px;
+    padding: 5px 10px;
+    white-space: nowrap;
+}
+
+/* Season - Active */
+#season-active::after {
+    background-color: rgba(var(--theme-green), 0.75);
+    border-radius: 5px;
+    content: "Active";
+    padding: 5px 10px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translate(25%, -50%);
+}
+
+/* Season - Upcoming */
+#season-upcoming::after {
+    background-color: rgba(var(--theme-yellow), 0.75);
+    border-radius: 5px;
+    content: "Upcoming";
+    padding: 5px 10px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translate(25%, -50%);
+}

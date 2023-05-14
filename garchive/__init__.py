@@ -30,18 +30,20 @@ view = use_templates(
     ]),
     enable_async = True
 )
+
 # Clean up HTML output
 app.jinja_environment.lstrip_blocks = True
 
 # Convert PNGs to webp
 seasons_directory = os.path.join(root, "garchive/static/seasons")
 logger.info("Converting PNGs to Webp ...")
-convert_png_to_webp(seasons_directory)
+# convert_png_to_webp(seasons_directory)
 logger.info("All PNGs successfully converted to Webp!")
 
 # Load seasons into RAM
 logger.info("Loading seasons into RAM ...")
-seasons = preload_seasons(seasons_directory)
+# seasons = preload_seasons(seasons_directory)
+seasons = []
 logger.info(f"Preloaded {len(seasons)} seasons into RAM!")
 
 # Launch status checks
