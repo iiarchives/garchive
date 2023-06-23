@@ -1,5 +1,0 @@
-jinja2
-pillow
-uvicorn
-mcstatus
-blacksheep

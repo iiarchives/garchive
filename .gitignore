@@ -1,5 +1,0 @@
-# Cache
-__pycache__/
-
-# Hide webp images
-garchive/static/seasons/*/gallery/*.webp
