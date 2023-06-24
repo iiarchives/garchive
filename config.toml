@@ -1,0 +1,5 @@
+# GArchive Configuration File
+
+# Server settings
+[server]
+address = "127.0.0.1:25565"
